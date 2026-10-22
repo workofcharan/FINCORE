@@ -1,0 +1,7 @@
+*.zip
+*.har
+*.log
+.cursor
+.agents
+*.tsbuildinfo
+public/screenshot-*.png
