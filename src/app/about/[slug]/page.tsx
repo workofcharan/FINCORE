@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import ConsultationForm from "@/components/ConsultationForm";
 import { aboutPillarsData, AboutPillarItem } from "@/data/aboutPillarsData";
 import {
   Compass,
@@ -73,7 +72,6 @@ export default async function PillarDetailPage({ params }: PillarPageProps) {
   }
 
   const Icon = pillar.icon;
-  const initialServiceName = pillar.recommendedServices[0]?.name || "Tax Filing";
 
   return (
     <>
@@ -140,7 +138,7 @@ export default async function PillarDetailPage({ params }: PillarPageProps) {
               </Link>
               <span className="text-slate-300">•</span>
               <a
-                href="#consultation"
+                href="/contact"
                 className="font-bold text-[#163E8C] hover:underline"
               >
                 Speak with an Advisor ↓
@@ -379,10 +377,7 @@ export default async function PillarDetailPage({ params }: PillarPageProps) {
         </div>
       </section>
 
-      {/* Embedded Consultation Form */}
-      <div id="consultation">
-        <ConsultationForm initialService={initialServiceName} />
-      </div>
+
     </>
   );
 }
