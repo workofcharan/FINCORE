@@ -32,7 +32,8 @@ export interface NotchedProjectCardProps {
   image: string;
   imageAlt?: string;
   imageClassName?: string;
-  /** a pill at the top of the cover, e.g. the year */
+  aspectRatio?: string;
+  /** a pill displayed with the card */
   badge?: string;
   tags?: string[];
   /** a product screen over the photo (transparent PNG/WebP works best) */
@@ -50,9 +51,9 @@ export interface NotchedProjectCardProps {
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
-const DISC = 64; // the arrow disc, px
-const BLOCK = 80; // the notch block, px (radius = BLOCK - DISC / 2)
-const FILLET = 28; // the curve where the cut meets the cover's edges, px
+const DISC = 46; // the arrow disc, px
+const BLOCK = 60; // the notch block, px (radius = BLOCK - DISC / 2)
+const FILLET = 20; // the curve where the cut meets the cover's edges, px
 
 export function NotchedProjectCard({
   href,
@@ -61,6 +62,7 @@ export function NotchedProjectCard({
   image,
   imageAlt = "",
   imageClassName,
+  aspectRatio = "aspect-square",
   badge,
   tags = [],
   screen,
@@ -87,14 +89,14 @@ export function NotchedProjectCard({
     >
       <div className="relative">
         {/* the cover */}
-        <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] bg-muted">
+        <div className={cn("relative overflow-hidden rounded-[28px] bg-white border border-slate-200/80 shadow-xs", aspectRatio)}>
           <img
             src={image}
             alt={screen ? "" : imageAlt}
             className={cn(
               "absolute inset-0 h-full w-full object-cover",
               tone,
-              !screen && "group-hover:scale-[1.04]",
+              !screen && "group-hover:scale-[1.03]",
               imageClassName,
             )}
           />
@@ -111,13 +113,6 @@ export function NotchedProjectCard({
                 screen.className,
               )}
             />
-          )}
-          {badge && (
-            <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-center pt-4">
-              <span className="rounded-full border border-white/40 bg-black/30 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-md">
-                {badge}
-              </span>
-            </div>
           )}
         </div>
 
@@ -149,9 +144,9 @@ export function NotchedProjectCard({
         <span
           aria-hidden
           className={cn(
-            "absolute bottom-0 right-0 flex items-center justify-center rounded-full bg-secondary text-secondary-foreground transition-[background-color,color,scale] duration-300 group-hover:scale-105 shadow-md",
+            "absolute bottom-0 right-0 flex items-center justify-center rounded-full bg-white text-slate-700 transition-[background-color,color,scale] duration-300 group-hover:scale-105 shadow-md border border-slate-200/60",
             accent
-              ? "group-hover:bg-[var(--card-accent)] group-hover:text-[var(--card-accent-fg)]"
+              ? "group-hover:bg-[var(--card-accent)] group-hover:text-[var(--card-accent-fg)] group-hover:border-transparent"
               : "group-hover:bg-primary group-hover:text-primary-foreground",
           )}
           style={
@@ -163,18 +158,27 @@ export function NotchedProjectCard({
             } as React.CSSProperties
           }
         >
-          <ArrowUpRight className="size-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          <ArrowUpRight className="size-4.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </span>
       </div>
 
-      <h3 className="mt-5 text-2xl font-medium tracking-tight text-foreground">{title}</h3>
-      {description && <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>}
+      <div className="mt-5 flex items-start justify-between gap-3">
+        <h3 className="text-xl font-bold tracking-tight text-[#080B12] font-heading group-hover:text-[#163E8C] transition-colors">
+          {title}
+        </h3>
+        {badge && (
+          <span className="shrink-0 rounded-full border border-blue-200/80 bg-blue-50/90 px-2.5 py-1 text-[11px] font-bold text-[#163E8C] font-mono shadow-2xs">
+            {badge}
+          </span>
+        )}
+      </div>
+      {description && <p className="mt-2 text-sm leading-relaxed text-slate-600 font-normal">{description}</p>}
       {tags.length > 0 && (
         <ul className="mt-4 flex flex-wrap gap-2">
           {tags.map((t, i) => (
             <li
               key={`${t}-${i}`}
-              className="rounded-md bg-secondary px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-secondary-foreground"
+              className="rounded-full bg-slate-100 border border-slate-200/80 px-2.5 py-0.5 text-[10px] font-semibold tracking-wider text-slate-700 uppercase"
             >
               {t}
             </li>

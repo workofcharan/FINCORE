@@ -319,7 +319,7 @@ textarea:focus-visible {
   will-change: transform, opacity, filter;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  animation: heroWordBlurSlide 0.78s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: heroWordBlurSlide 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .animate-hero-subtitle {
@@ -327,7 +327,7 @@ textarea:focus-visible {
   will-change: transform, opacity, filter;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  animation: heroSubtitleBlurSlide 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+  animation: heroSubtitleBlurSlide 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
 
 .animate-hero-actions {
@@ -335,7 +335,7 @@ textarea:focus-visible {
   will-change: transform, opacity, filter;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  animation: heroActionsBlurSlide 0.85s cubic-bezier(0.16, 1, 0.3, 1) 1.05s forwards;
+  animation: heroActionsBlurSlide 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
 }
 
 .animate-float {

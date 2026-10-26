@@ -22,6 +22,8 @@ import {
   ExternalLink,
 } from "lucide-react";
 
+export const instant = false;
+
 interface PillarPageProps {
   params: Promise<{
     slug: string;

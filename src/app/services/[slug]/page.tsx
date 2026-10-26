@@ -17,6 +17,8 @@ import {
   Sparkles,
 } from "lucide-react";
 
+export const instant = false;
+
 interface ServicePageProps {
   params: Promise<{
     slug: string;
@@ -38,7 +40,6 @@ const SERVICE_VISUALS: Record<
     badge: "ITR 1-7 Assessment",
     tags: ["ITR-1 to 7", "AIS Reconciliation", "Audit Ready"],
     accent: "#163E8C",
-    imageClassName: "object-contain p-2 sm:p-3 bg-gradient-to-b from-blue-50/80 via-white to-slate-50",
   },
   "accounting-bookkeeping": {
     image: "/images/accounting-bookkeeping.png",
@@ -51,7 +52,6 @@ const SERVICE_VISUALS: Record<
     badge: "GSTN Compliance",
     tags: ["GSTR-1 & 3B", "Input Tax Credit", "E-Way Bills"],
     accent: "#163E8C",
-    imageClassName: "object-contain p-2 sm:p-3 bg-gradient-to-b from-blue-50/80 via-white to-slate-50",
   },
   "tds": {
     image: "/images/tds.png",
@@ -64,42 +64,36 @@ const SERVICE_VISUALS: Record<
     badge: "Tax Collection",
     tags: ["Form 27EQ", "Sec 206C", "Challan 281"],
     accent: "#163E8C",
-    imageClassName: "object-contain p-2 sm:p-3 bg-gradient-to-b from-amber-50/70 via-white to-slate-50",
   },
   "provident-fund": {
     image: "/images/provident-fund.png",
     badge: "Social Security",
     tags: ["Monthly ECR", "UAN KYC", "EPFO Filings"],
     accent: "#163E8C",
-    imageClassName: "object-cover",
   },
   "esi": {
     image: "/images/esi.png",
     badge: "Employee Health",
     tags: ["Medical Scheme", "ESIC Portal", "Statutory Register"],
     accent: "#163E8C",
-    imageClassName: "object-cover",
   },
   "professional-tax": {
     image: "/images/professional-tax.png",
     badge: "State Statutory",
     tags: ["PTRC & PTEC", "State Slabs", "Form 5 Returns"],
     accent: "#163E8C",
-    imageClassName: "object-contain p-2 sm:p-3 bg-gradient-to-b from-amber-50/70 via-white to-slate-50",
   },
   "company-incorporation": {
     image: "/images/company-incorporation.png",
     badge: "MCA Incorporation",
     tags: ["SPICe+ Part B", "DIN & DSC", "MOA & AOA"],
     accent: "#163E8C",
-    imageClassName: "object-cover",
   },
   "partnership-registration": {
     image: "/images/partnership.png",
     badge: "ROC Registered",
     tags: ["LLP Agreement", "Form 11 & 8", "Partnership Deed"],
     accent: "#163E8C",
-    imageClassName: "object-cover",
   },
   "business-registration": {
     image: "/images/business-registration.png",
@@ -112,14 +106,12 @@ const SERVICE_VISUALS: Record<
     badge: "Municipal Permit",
     tags: ["Municipal Body", "Premises Verification", "Annual Renewal"],
     accent: "#163E8C",
-    imageClassName: "object-cover",
   },
   "labour-license": {
     image: "/images/labour-license.png",
     badge: "Labour Dept",
     tags: ["Form A to D", "Shop & Est. Act", "Compliance Record"],
     accent: "#163E8C",
-    imageClassName: "object-cover",
   },
   "food-license": {
     image: "/images/food-license.png",
@@ -127,8 +119,14 @@ const SERVICE_VISUALS: Record<
     tags: ["Basic/State/Central", "FoSCoS Portal", "Hygiene Standard"],
     accent: "#163E8C",
   },
+  "other-licenses": {
+    image: "/images/fincore-brand.png",
+    badge: "Custom Licenses",
+    tags: ["Special Permits", "State Clearances", "Advisory Review"],
+    accent: "#163E8C",
+  },
   "regulatory-compliance": {
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
+    image: "/images/fincore-brand.png",
     badge: "Corporate Audit",
     tags: ["Statutory Audit", "Secretarial Review", "Director KYC"],
     accent: "#163E8C",

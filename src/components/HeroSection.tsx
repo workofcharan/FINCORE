@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { useSPA } from "@/context/SPAContext";
 
 interface HeroSectionProps {
@@ -36,16 +37,24 @@ export default function HeroSection({ onOpenConsultation }: HeroSectionProps = {
     <section
       id="hero"
       className="relative min-h-screen flex flex-col justify-center pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-white overflow-hidden scroll-mt-20 select-none"
-      style={{
-        backgroundImage: `
-          linear-gradient(180deg, rgba(8, 14, 28, 0.2) 0%, rgba(8, 14, 28, 0.0) 30%, rgba(8, 14, 28, 0.0) 70%, rgba(7, 14, 30, 0.35) 100%),
-          url('/images/hero-bg.png')
-        `,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundColor: "#1E2638",
-      }}
     >
+      {/* Background Image Container with Next.js Image for optimal crispness & clarity */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image
+          src="/images/hero-bg.png"
+          alt="FINCORE Financial & Business Advisory - Deal Partnership and Consultation"
+          fill
+          priority
+          quality={95}
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        {/* Balanced, translucent gradient ensuring the desk, handshake, laptop & documents remain clearly visible */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#080E1C]/40 via-[#080E1C]/20 to-[#080E1C]/60 pointer-events-none" />
+        {/* Soft radial vignette focusing readability in the center */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(8,14,28,0.35)_0%,transparent_75%)] pointer-events-none" />
+      </div>
+
       {/* Main Hero Editorial Content (Centered) */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 my-auto text-center space-y-6 sm:space-y-8">
         {/* Monumental Centered Headline with Crisp Shadows */}
@@ -108,10 +117,26 @@ export default function HeroSection({ onOpenConsultation }: HeroSectionProps = {
 
           <Link
             href="/services"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold rounded-full text-white hover:text-white bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/30 transition-all duration-300 shadow-xl"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold rounded-full text-white hover:text-white bg-black/45 hover:bg-black/65 backdrop-blur-md border border-white/35 transition-all duration-300 shadow-xl"
           >
             <span>Explore Services</span>
           </Link>
+        </div>
+
+        {/* Verified Trust Strip */}
+        <div className="pt-6 sm:pt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-slate-100">
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 backdrop-blur-md shadow-lg">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <span className="font-medium">MCA &amp; GSTN Verified</span>
+          </div>
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 backdrop-blur-md shadow-lg">
+            <CheckCircle2 className="w-4 h-4 text-amber-300" />
+            <span className="font-medium">Zero Penalty Checklists</span>
+          </div>
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 backdrop-blur-md shadow-lg">
+            <CheckCircle2 className="w-4 h-4 text-cyan-300" />
+            <span className="font-medium">100% Data Confidentiality</span>
+          </div>
         </div>
       </div>
     </section>

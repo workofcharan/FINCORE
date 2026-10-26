@@ -106,13 +106,13 @@ export default function WhoWeServeSection() {
         </div>
 
         <div className="mt-12 text-center">
-          <Link
-            href="/who-we-serve"
+          <a
+            href="#consultation"
             className="inline-flex items-center gap-2 text-sm font-semibold text-[#163E8C] hover:text-[#0B2458] underline underline-offset-4 transition-colors"
           >
             <span>Learn in detail how we customize compliance per industry sector</span>
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </a>
         </div>
       </div>
     </section>
