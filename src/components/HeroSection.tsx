@@ -46,7 +46,7 @@ export default function HeroSection({ onOpenConsultation }: HeroSectionProps = {
           fill
           priority
           sizes="100vw"
-          quality={85}
+          
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#080E1C]/40 via-[#080E1C]/15 to-[#080E1C]/60" />
