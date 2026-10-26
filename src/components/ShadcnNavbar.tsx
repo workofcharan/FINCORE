@@ -101,16 +101,16 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
       <div className="w-full max-w-6xl pointer-events-auto">
         <div
           className={cn(
-            "relative w-full rounded-2xl sm:rounded-full px-4 sm:px-6 py-2.5 transition-all duration-300 flex items-center justify-between",
+            "relative w-full rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2.5 transition-all duration-300 flex items-center justify-between",
             "bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md shadow-slate-900/5",
             isScrolled && "shadow-lg border-slate-300/80 bg-white/98"
           )}
         >
           {/* Continuous Scroll / Location Bar along bottom of the Navbar Capsule */}
-          <div className="absolute -bottom-[1px] left-6 right-6 h-[2.5px] bg-slate-100/80 rounded-full overflow-hidden pointer-events-none">
+          <div className="absolute -bottom-[1px] left-6 right-6 h-[2.5px] bg-slate-100/80 rounded-xs overflow-hidden pointer-events-none">
             <div
               ref={progressRef}
-              className="h-full bg-gradient-to-r from-[#163E8C] via-blue-500 to-[#163E8C] rounded-full transition-[width] duration-100 ease-out shadow-xs"
+              className="h-full bg-gradient-to-r from-[#163E8C] via-blue-500 to-[#163E8C] rounded-xs transition-[width] duration-100 ease-out shadow-xs"
               style={{ width: "4%" }}
             />
           </div>
@@ -135,7 +135,7 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
             </Link>
 
             {/* Current Location Badge */}
-            <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100/90 border border-slate-200/80 text-[11px] font-medium text-slate-600 transition-all">
+            <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100/90 border border-slate-200/80 text-[11px] font-medium text-slate-600 transition-all">
               <MapPin className="size-3 text-[#163E8C]" />
               <span className="text-slate-400 font-mono text-[10px] uppercase tracking-wider">At:</span>
               <span className="font-bold text-[#163E8C]">{getSectionLabel()}</span>
@@ -153,7 +153,7 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
                       href="/"
                       className={cn(
                         navigationMenuTriggerStyle(),
-                        "cursor-pointer text-xs rounded-full px-3.5 py-1.5 transition-all",
+                        "cursor-pointer text-xs rounded-lg px-3.5 py-1.5 transition-all",
                         isHome
                           ? "bg-[#EAF1FF] text-[#163E8C] font-bold"
                           : "text-slate-700 hover:text-[#163E8C] hover:bg-slate-100/70 font-semibold"
@@ -165,7 +165,7 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
                   {/* Location Bar Indicator */}
                   {isHome && (
                     <span
-                      className="absolute -bottom-1.5 left-3 right-3 h-[2.5px] bg-[#163E8C] rounded-full shadow-xs animate-in fade-in-0 zoom-in-95 duration-200"
+                      className="absolute -bottom-1.5 left-3 right-3 h-[2px] bg-[#163E8C] rounded-xs shadow-xs animate-in fade-in-0 zoom-in-95 duration-200"
                       aria-hidden="true"
                     />
                   )}
@@ -178,7 +178,7 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
                       href="/about"
                       className={cn(
                         navigationMenuTriggerStyle(),
-                        "cursor-pointer text-xs rounded-full px-3.5 py-1.5 transition-all",
+                        "cursor-pointer text-xs rounded-lg px-3.5 py-1.5 transition-all",
                         isAbout
                           ? "bg-[#EAF1FF] text-[#163E8C] font-bold"
                           : "text-slate-700 hover:text-[#163E8C] hover:bg-slate-100/70 font-semibold"
@@ -190,7 +190,7 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
                   {/* Location Bar Indicator */}
                   {isAbout && (
                     <span
-                      className="absolute -bottom-1.5 left-3 right-3 h-[2.5px] bg-[#163E8C] rounded-full shadow-xs animate-in fade-in-0 zoom-in-95 duration-200"
+                      className="absolute -bottom-1.5 left-3 right-3 h-[2px] bg-[#163E8C] rounded-xs shadow-xs animate-in fade-in-0 zoom-in-95 duration-200"
                       aria-hidden="true"
                     />
                   )}
@@ -207,7 +207,7 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
                       }
                     }}
                     className={cn(
-                      "cursor-pointer text-xs rounded-full px-3.5 py-1.5 transition-all data-popup-open:bg-slate-100/80 data-open:bg-slate-100/80",
+                      "cursor-pointer text-xs rounded-lg px-3.5 py-1.5 transition-all data-popup-open:bg-slate-100/80 data-open:bg-slate-100/80",
                       isServices
                         ? "bg-[#EAF1FF] text-[#163E8C] font-bold"
                         : "text-slate-700 hover:text-[#163E8C] hover:bg-slate-100/70 font-semibold"
@@ -218,7 +218,7 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
                   {/* Location Bar Indicator */}
                   {isServices && (
                     <span
-                      className="absolute -bottom-1.5 left-3 right-3 h-[2.5px] bg-[#163E8C] rounded-full shadow-xs animate-in fade-in-0 zoom-in-95 duration-200"
+                      className="absolute -bottom-1.5 left-3 right-3 h-[2px] bg-[#163E8C] rounded-xs shadow-xs animate-in fade-in-0 zoom-in-95 duration-200"
                       aria-hidden="true"
                     />
                   )}
@@ -418,7 +418,7 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
                       href="/contact"
                       className={cn(
                         navigationMenuTriggerStyle(),
-                        "cursor-pointer text-xs rounded-full px-3.5 py-1.5 transition-all",
+                        "cursor-pointer text-xs rounded-lg px-3.5 py-1.5 transition-all",
                         isContact
                           ? "bg-[#EAF1FF] text-[#163E8C] font-bold"
                           : "text-slate-700 hover:text-[#163E8C] hover:bg-slate-100/70 font-semibold"
@@ -430,7 +430,7 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
                   {/* Location Bar Indicator */}
                   {isContact && (
                     <span
-                      className="absolute -bottom-1.5 left-3 right-3 h-[2.5px] bg-[#163E8C] rounded-full shadow-xs animate-in fade-in-0 zoom-in-95 duration-200"
+                      className="absolute -bottom-1.5 left-3 right-3 h-[2px] bg-[#163E8C] rounded-xs shadow-xs animate-in fade-in-0 zoom-in-95 duration-200"
                       aria-hidden="true"
                     />
                   )}
@@ -444,7 +444,7 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
             <button
               type="button"
               onClick={handleConsultation}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#163E8C] hover:bg-[#0B2458] text-white text-xs sm:text-sm font-semibold transition-all shadow-xs hover:shadow-md cursor-pointer group"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#163E8C] hover:bg-[#0B2458] text-white text-xs sm:text-sm font-semibold transition-all shadow-xs hover:shadow-md cursor-pointer group"
             >
               <span>Book Consultation</span>
               <ArrowRight className="size-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -464,10 +464,10 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
 
         {/* Mobile Dropdown Panel with Active Location Indicators */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-2 p-5 bg-white rounded-3xl border border-slate-200/90 shadow-2xl space-y-4 animate-in fade-in-0 zoom-in-95 duration-200">
+          <div className="md:hidden mt-2 p-5 bg-white rounded-2xl border border-slate-200/90 shadow-2xl space-y-4 animate-in fade-in-0 zoom-in-95 duration-200">
             <div className="flex items-center justify-between pb-2 border-b border-slate-100 text-xs">
               <span className="text-slate-500 font-medium">Current Location:</span>
-              <span className="font-bold text-[#163E8C] bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200/60">
+              <span className="font-bold text-[#163E8C] bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-200/60">
                 {getSectionLabel()}
               </span>
             </div>
@@ -517,7 +517,7 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
                 {isServices ? (
                   <span className="size-2 rounded-full bg-[#163E8C]" />
                 ) : (
-                  <span className="text-[10px] font-mono bg-blue-100 text-[#163E8C] px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] font-mono bg-blue-100 text-[#163E8C] px-2 py-0.5 rounded-md">
                     Directory
                   </span>
                 )}
