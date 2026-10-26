@@ -37,7 +37,7 @@ export function ServiceCardModern({
       className={cn(
         "group relative flex flex-col justify-between rounded-3xl bg-white p-7 sm:p-8",
         "border border-slate-200/80 shadow-md shadow-slate-200/40 hover:shadow-2xl hover:shadow-slate-300/60",
-        "hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer overflow-hidden select-none block",
+        "hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer overflow-hidden select-none h-full",
         className
       )}
     >
@@ -47,19 +47,18 @@ export function ServiceCardModern({
         style={{ background: glowColor }}
       />
 
-      {/* Standardized Related Card Background Image */}
+      {/* Standardized Related Card Background Image across entire card */}
       {backgroundImage && (
-        <div className="absolute top-0 right-0 w-56 sm:w-64 h-48 sm:h-52 overflow-hidden pointer-events-none rounded-tr-3xl z-0">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-3xl z-0">
           <Image
             src={backgroundImage}
             alt=""
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover object-center opacity-30 group-hover:opacity-55 group-hover:scale-108 transition-all duration-500 ease-out"
+            className="object-cover object-center opacity-12 group-hover:opacity-22 group-hover:scale-105 transition-all duration-500 ease-out"
           />
-          {/* Multi-directional gradient wash ensuring seamless blend into card */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
+          {/* Subtle gradient wash so text is 100% crisp and readable */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/88 to-white" />
         </div>
       )}
 
@@ -71,7 +70,7 @@ export function ServiceCardModern({
       />
 
       {/* Card Content Top */}
-      <div className="relative z-10">
+      <div className="relative z-10 flex-1 flex flex-col">
         {/* Squircle Gradient Icon Badge */}
         <div
           className={cn(
@@ -84,21 +83,21 @@ export function ServiceCardModern({
         </div>
 
         {/* Title */}
-        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mt-5 group-hover:text-[#163E8C] transition-colors duration-200 font-heading">
+        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mt-5 group-hover:text-[#163E8C] transition-colors duration-200 font-heading min-h-[3.25rem] flex items-center">
           {service.name}
         </h3>
 
-        {/* 2-line Description */}
-        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2.5 line-clamp-2">
+        {/* 2-line Description with fixed height for vertical alignment */}
+        <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mt-2.5 line-clamp-2 min-h-[2.5rem]">
           {service.description}
         </p>
 
         {/* 4 Feature Points with Accent Colored Bullets */}
-        <ul className="space-y-2.5 my-6">
+        <ul className="space-y-2.5 my-6 flex-1">
           {bullets.map((bullet, idx) => (
             <li
               key={idx}
-              className="flex items-center gap-2.5 text-xs text-slate-700 font-medium"
+              className="flex items-center gap-2.5 text-xs text-slate-600 font-medium"
             >
               <span
                 className="w-1.5 h-1.5 rounded-full shrink-0 group-hover:scale-125 transition-transform"
@@ -110,17 +109,17 @@ export function ServiceCardModern({
         </ul>
       </div>
 
-      {/* Bottom 3-Metric Strip */}
-      <div className="pt-5 border-t border-slate-100 grid grid-cols-3 gap-2 relative z-10 bg-white/60 backdrop-blur-xs rounded-xl px-2 -mx-2">
+      {/* Bottom 3-Metric Strip with clean divider and perfect alignment */}
+      <div className="pt-5 border-t border-slate-100 grid grid-cols-3 gap-2 relative z-10 mt-auto">
         {stats.map((st, idx) => (
           <div key={idx} className="flex flex-col">
             <span
-              className="text-sm sm:text-base font-extrabold tracking-tight"
+              className="text-sm sm:text-base font-extrabold tracking-tight truncate"
               style={{ color: accentColor }}
             >
               {st.value}
             </span>
-            <span className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider mt-0.5 truncate">
+            <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mt-0.5 truncate">
               {st.label}
             </span>
           </div>

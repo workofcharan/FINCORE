@@ -90,7 +90,7 @@ const SERVICE_CONFIGS: Record<string, ServiceCardConfig> = {
     stats: [
       { value: "Monthly", label: "MIS Reporting" },
       { value: "Zero", label: "Ledger Gaps" },
-      { value: "Audit Ready", label: "Financials" },
+      { value: "100%", label: "Audit Ready" },
     ],
   },
   "company-incorporation": {
@@ -107,7 +107,7 @@ const SERVICE_CONFIGS: Record<string, ServiceCardConfig> = {
     stats: [
       { value: "5-7 Days", label: "Fast-Track SLA" },
       { value: "100%", label: "Online Setup" },
-      { value: "MCA Direct", label: "Filings" },
+      { value: "Direct", label: "MCA Filings" },
     ],
   },
   "partnership-registration": {
@@ -123,8 +123,8 @@ const SERVICE_CONFIGS: Record<string, ServiceCardConfig> = {
     ],
     stats: [
       { value: "150+", label: "LLPs Formed" },
-      { value: "Deed Drafts", label: "Fast-Track" },
-      { value: "ROC Compliant", label: "Standard" },
+      { value: "Custom", label: "Deed Drafts" },
+      { value: "100%", label: "ROC Compliant" },
     ],
   },
   "business-registration": {
@@ -139,8 +139,8 @@ const SERVICE_CONFIGS: Record<string, ServiceCardConfig> = {
       "Government Subsidies & Benefits Help",
     ],
     stats: [
-      { value: "Same-Day", label: "Udyam Issuance" },
-      { value: "Zero-Cost", label: "Govt Portal" },
+      { value: "Same-Day", label: "Udyam Issue" },
+      { value: "Direct", label: "Govt Portal" },
       { value: "100%", label: "Paperless" },
     ],
   },
@@ -158,7 +158,7 @@ const SERVICE_CONFIGS: Record<string, ServiceCardConfig> = {
     stats: [
       { value: "Monthly", label: "ECR Filings" },
       { value: "20+ Staff", label: "Mandate Slabs" },
-      { value: "EPFO Portal", label: "Direct Sync" },
+      { value: "Direct", label: "EPFO Sync" },
     ],
   },
   "esi": {
@@ -175,7 +175,7 @@ const SERVICE_CONFIGS: Record<string, ServiceCardConfig> = {
     stats: [
       { value: "10+ Staff", label: "Threshold" },
       { value: "Monthly", label: "Challan Filing" },
-      { value: "ESIC", label: "Fully Compliant" },
+      { value: "100%", label: "Compliant" },
     ],
   },
   "tds": {
@@ -192,7 +192,7 @@ const SERVICE_CONFIGS: Record<string, ServiceCardConfig> = {
     stats: [
       { value: "Quarterly", label: "Return Cycles" },
       { value: "TRACES", label: "Portal Sync" },
-      { value: "Zero Delay", label: "Compliance" },
+      { value: "Zero", label: "Penalty Risk" },
     ],
   },
   "tcs": {
@@ -224,9 +224,9 @@ const SERVICE_CONFIGS: Record<string, ServiceCardConfig> = {
       "Annual Form 5 PT Submissions",
     ],
     stats: [
-      { value: "State Slabs", label: "Karnataka/Pan-IN" },
+      { value: "Pan-State", label: "State Slabs" },
       { value: "Monthly", label: "Remittance" },
-      { value: "Prompt", label: "Clearances" },
+      { value: "100%", label: "Clearances" },
     ],
   },
   "trade-license": {
@@ -258,7 +258,7 @@ const SERVICE_CONFIGS: Record<string, ServiceCardConfig> = {
       "Statutory Wage Registers Setup",
     ],
     stats: [
-      { value: "State Labour", label: "Department" },
+      { value: "State Act", label: "Labour Dept" },
       { value: "Mandatory", label: "For Premises" },
       { value: "100%", label: "Compliant" },
     ],
