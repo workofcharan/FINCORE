@@ -43,6 +43,7 @@ export default function CTASection({ onOpenConsultation }: CTASectionProps = {})
             src="/images/fincore-banner.png"
             alt="FINCORE - Financial & Business Consultancy: Your Trusted Partner in Tax, Registration, Accounting & Licensing"
             fill
+            priority
             sizes="(max-width: 1280px) 100vw, 1280px"
             className="object-cover w-full h-full"
           />
