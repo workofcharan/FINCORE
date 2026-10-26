@@ -36,10 +36,10 @@ export default function HeroSection({ onOpenConsultation }: HeroSectionProps = {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-white overflow-hidden scroll-mt-20 select-none"
+      className="relative min-h-screen flex flex-col justify-center pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-white overflow-hidden scroll-mt-20 select-none rounded-b-[36px] sm:rounded-b-[48px] lg:rounded-b-[64px] shadow-2xl"
     >
       {/* High-Performance Optimized Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none rounded-b-[36px] sm:rounded-b-[48px] lg:rounded-b-[64px]">
         <Image
           src="/images/hero-bg.webp"
           alt="FINCORE Financial & Business Advisory"
