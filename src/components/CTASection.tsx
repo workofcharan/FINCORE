@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowRight, FileCheck, Building2, BookOpen, ShieldCheck } from "lucide-react";
 import { useSPA } from "@/context/SPAContext";
 import { useInView } from "@/hooks/useInView";
 
@@ -15,71 +16,155 @@ export default function CTASection({ onOpenConsultation }: CTASectionProps = {})
   const handleConsultation = onOpenConsultation || (() => spa.openConsultation());
   const { ref, isInView } = useInView({ threshold: 0.1 });
 
+  const handleScrollTo = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const target = document.querySelector(id);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = `/${id}`;
+    }
+  };
+
   return (
-    <section ref={ref} className="py-16 sm:py-24 bg-[#FAF9F6] relative overflow-hidden">
+    <section
+      ref={ref}
+      id="banner-section"
+      className="py-12 sm:py-16 lg:py-20 bg-[#FAF9F6] relative overflow-hidden select-none"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Luxury Architectural Banner */}
         <div
-          className={`relative rounded-3xl bg-gradient-to-br from-[#080B14] via-[#0F1626] to-[#1C1613] text-white p-8 sm:p-12 lg:p-16 shadow-2xl overflow-hidden border border-white/10 transition-all duration-700 ${
-            isInView ? "animate-section-reveal" : "opacity-0 translate-y-8"
+          className={`relative w-full aspect-[1553/542] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-slate-200/80 bg-white transition-all duration-700 ${
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          {/* Subtle Ambient Radial Lighting with Live Breathing Animations */}
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none animate-subtle-float" />
-          <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-blue-600/20 rounded-full blur-3xl pointer-events-none animate-subtle-pulse" />
+          {/* Banner Graphic */}
+          <Image
+            src="/images/fincore-banner.png"
+            alt="FINCORE - Financial & Business Consultancy: Your Trusted Partner in Tax, Registration, Accounting & Licensing"
+            fill
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            className="object-cover w-full h-full"
+          />
 
-          {/* Animated top golden energy accent beam */}
-          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-amber-400/80 to-transparent opacity-80" />
+          {/* Interactive Hotspot Overlay: 'Explore Our Services ->' button */}
+          <a
+            href="#services"
+            onClick={(e) => handleScrollTo(e, "#services")}
+            aria-label="Explore Our Services"
+            className="absolute left-[4.8%] top-[58.5%] w-[14.5%] h-[8.3%] rounded-full cursor-pointer transition-all duration-200 hover:ring-2 hover:ring-blue-400 hover:ring-offset-2 hover:bg-white/10 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            title="Explore Our Services"
+          >
+            <span className="sr-only">Explore Our Services</span>
+          </a>
 
-          {/* Banner Content */}
-          <div className="relative z-10 max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-amber-300 text-xs font-mono font-semibold uppercase tracking-wider shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
-              <span>Direct Statutory Facilitation</span>
-            </div>
+          {/* Interactive Hotspot Overlay: 'Get Consultation ->' button */}
+          <button
+            type="button"
+            onClick={handleConsultation}
+            aria-label="Get Consultation"
+            className="absolute left-[20.8%] top-[58.5%] w-[12.6%] h-[8.3%] rounded-full cursor-pointer transition-all duration-200 hover:ring-2 hover:ring-blue-400 hover:ring-offset-2 hover:bg-blue-600/10 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            title="Get Consultation"
+          >
+            <span className="sr-only">Get Consultation</span>
+          </button>
 
-            <h2 className="text-3xl sm:text-5xl lg:text-5.5xl font-extrabold tracking-tight text-white leading-[1.14] font-heading">
-              Let&apos;s Simplify Your Business Compliance
-            </h2>
+          {/* Interactive Hotspot Overlays for the 4 Feature Pills at bottom */}
+          {/* 1. Tax & GST Compliance */}
+          <a
+            href="#services"
+            onClick={(e) => handleScrollTo(e, "#services")}
+            className="absolute left-[4.8%] top-[76.5%] w-[10.8%] h-[10%] rounded-full cursor-pointer hover:bg-blue-500/10 transition-colors"
+            title="Tax & GST Compliance"
+          >
+            <span className="sr-only">Tax &amp; GST Compliance</span>
+          </a>
 
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl">
-              Explore the right consultancy services for your financial, registration, accounting, and licensing requirements with total clarity.
-            </p>
+          {/* 2. Business Registration */}
+          <a
+            href="#services"
+            onClick={(e) => handleScrollTo(e, "#services")}
+            className="absolute left-[16.0%] top-[76.5%] w-[11.0%] h-[10%] rounded-full cursor-pointer hover:bg-blue-500/10 transition-colors"
+            title="Business Registration"
+          >
+            <span className="sr-only">Business Registration</span>
+          </a>
 
-            {/* Pill CTAs (Matching Reference Button Style) */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <button
-                type="button"
-                onClick={handleConsultation}
-                className="btn-pill-white inline-flex items-center justify-center gap-2.5 px-8 py-3.5 text-sm sm:text-base font-semibold rounded-full text-[#080B14] cursor-pointer group shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
-              >
-                <span>Request a Consultation</span>
-                <ArrowRight className="w-4 h-4 text-[#080B14] group-hover:translate-x-1.5 transition-transform" />
-              </button>
+          {/* 3. Accounting & Bookkeeping */}
+          <a
+            href="#services"
+            onClick={(e) => handleScrollTo(e, "#services")}
+            className="absolute left-[27.4%] top-[76.5%] w-[12.0%] h-[10%] rounded-full cursor-pointer hover:bg-blue-500/10 transition-colors"
+            title="Accounting & Bookkeeping"
+          >
+            <span className="sr-only">Accounting &amp; Bookkeeping</span>
+          </a>
 
-              <Link
-                href="/services"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm sm:text-base font-semibold rounded-full text-white hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
-              >
-                <span>Explore All 15 Services</span>
-              </Link>
-            </div>
+          {/* 4. Licensing & Regulatory Support */}
+          <a
+            href="#services"
+            onClick={(e) => handleScrollTo(e, "#services")}
+            className="absolute left-[39.6%] top-[76.5%] w-[14.0%] h-[10%] rounded-full cursor-pointer hover:bg-blue-500/10 transition-colors"
+            title="Licensing & Regulatory Support"
+          >
+            <span className="sr-only">Licensing &amp; Regulatory Support</span>
+          </a>
+        </div>
 
-            {/* Trust Checklist with hover micro-animations */}
-            <div className="pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-slate-300">
-              <div className="flex items-center gap-2 group cursor-default">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 group-hover:scale-125 transition-transform" />
-                <span className="group-hover:text-white transition-colors">Statutory Checklist Preparation</span>
-              </div>
-              <div className="flex items-center gap-2 group cursor-default">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 group-hover:scale-125 transition-transform" />
-                <span className="group-hover:text-white transition-colors">Structured Portal Submissions</span>
-              </div>
-              <div className="flex items-center gap-2 group cursor-default">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 group-hover:scale-125 transition-transform" />
-                <span className="group-hover:text-white transition-colors">Confidential Client Handling</span>
-              </div>
-            </div>
+        {/* Mobile-Optimized Action Bar (< sm screens) */}
+        <div className="mt-4 px-1 sm:hidden flex flex-col gap-2.5">
+          <div className="flex items-center gap-2.5">
+            <button
+              type="button"
+              onClick={handleConsultation}
+              className="flex-1 btn-pill-warm py-3 px-4 rounded-xl text-center text-sm font-semibold text-white shadow-md inline-flex items-center justify-center gap-2"
+            >
+              <span>Get Consultation</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <a
+              href="#services"
+              onClick={(e) => handleScrollTo(e, "#services")}
+              className="flex-1 py-3 px-4 rounded-xl text-center text-sm font-semibold text-slate-800 bg-white border border-slate-300 shadow-sm hover:bg-slate-50 transition-colors inline-flex items-center justify-center"
+            >
+              Explore Services
+            </a>
+          </div>
+
+          {/* Quick Pillar Tags on Mobile */}
+          <div className="grid grid-cols-2 gap-2 text-xs text-slate-700 pt-0.5">
+            <a
+              href="#services"
+              onClick={(e) => handleScrollTo(e, "#services")}
+              className="flex items-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200/80 shadow-xs hover:border-blue-400 transition-colors"
+            >
+              <FileCheck className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <span className="font-medium truncate">Tax &amp; GST</span>
+            </a>
+            <a
+              href="#services"
+              onClick={(e) => handleScrollTo(e, "#services")}
+              className="flex items-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200/80 shadow-xs hover:border-blue-400 transition-colors"
+            >
+              <Building2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <span className="font-medium truncate">Registrations</span>
+            </a>
+            <a
+              href="#services"
+              onClick={(e) => handleScrollTo(e, "#services")}
+              className="flex items-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200/80 shadow-xs hover:border-blue-400 transition-colors"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <span className="font-medium truncate">Accounting</span>
+            </a>
+            <a
+              href="#services"
+              onClick={(e) => handleScrollTo(e, "#services")}
+              className="flex items-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200/80 shadow-xs hover:border-blue-400 transition-colors"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <span className="font-medium truncate">Licensing</span>
+            </a>
           </div>
         </div>
       </div>

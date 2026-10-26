@@ -37,7 +37,7 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const progressRef = React.useRef<HTMLDivElement>(null);
 
   // Determine current active section from URL pathname
   const isHome = pathname === "/";
@@ -45,21 +45,35 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
   const isServices = pathname?.startsWith("/services");
   const isContact = pathname?.startsWith("/contact");
 
-  // Track scroll position to update header styling & location bar progress
+  // Throttled high-performance scroll handling via requestAnimationFrame
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+    let ticking = false;
+    let lastScrolled = false;
 
-      setScrollProgress(progress);
-      setIsScrolled(scrollY > 20);
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          const shouldScrolled = scrollY > 20;
+          if (shouldScrolled !== lastScrolled) {
+            lastScrolled = shouldScrolled;
+            setIsScrolled(shouldScrolled);
+          }
+
+          if (progressRef.current) {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+            progressRef.current.style.width = `${Math.max(progress, 4)}%`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const handleConsultation = () => {
@@ -95,8 +109,9 @@ export default function ShadcnNavbar({ onOpenConsultation }: ShadcnNavbarProps) 
           {/* Continuous Scroll / Location Bar along bottom of the Navbar Capsule */}
           <div className="absolute -bottom-[1px] left-6 right-6 h-[2.5px] bg-slate-100/80 rounded-full overflow-hidden pointer-events-none">
             <div
-              className="h-full bg-gradient-to-r from-[#163E8C] via-blue-500 to-[#163E8C] rounded-full transition-all duration-150 ease-out shadow-xs"
-              style={{ width: `${Math.max(scrollProgress, 4)}%` }}
+              ref={progressRef}
+              className="h-full bg-gradient-to-r from-[#163E8C] via-blue-500 to-[#163E8C] rounded-full transition-[width] duration-100 ease-out shadow-xs"
+              style={{ width: "4%" }}
             />
           </div>
 

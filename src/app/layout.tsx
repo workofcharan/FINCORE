@@ -121,8 +121,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-scroll-behavior="smooth"
-      className={cn("antialiased", "scroll-smooth", plusJakartaSans.variable, "font-sans", geist.variable)}
+      
+      className={cn("antialiased", plusJakartaSans.variable, "font-sans", geist.variable)}
     >
       <head>
         <script

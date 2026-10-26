@@ -81,7 +81,7 @@ export function NotchedProjectCard({
       href={href}
       onClick={onClick}
       className={cn(
-        "group flex flex-col rounded-[28px] outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background cursor-pointer hover:-translate-y-2 transition-all duration-300",
+        "group flex flex-col rounded-[28px] outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background cursor-pointer hover:-translate-y-1.5 transition-transform duration-200 ease-out will-change-transform",
         className,
       )}
     >
@@ -91,6 +91,8 @@ export function NotchedProjectCard({
           <img
             src={image}
             alt={screen ? "" : imageAlt}
+            loading="lazy"
+            decoding="async"
             className={cn(
               "absolute inset-0 h-full w-full object-cover",
               tone,

@@ -155,8 +155,8 @@ export default function ConsultationForm({
       <div id="consultation" className="absolute -top-24 left-0" />
 
       {/* Decorative ambient background glows */}
-      <div className="absolute top-1/3 -left-28 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none animate-subtle-pulse" />
-      <div className="absolute bottom-10 -right-28 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none animate-subtle-float" />
+      <div className="absolute top-1/3 -left-28 w-96 h-96 bg-[radial-gradient(circle,rgba(59,130,246,0.05)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-10 -right-28 w-96 h-96 bg-[radial-gradient(circle,rgba(245,158,11,0.05)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 relative z-10">
         {/* Section Header (Centered across top of the section) */}

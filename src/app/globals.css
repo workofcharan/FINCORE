@@ -60,7 +60,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  
   font-family: var(--font-sans), 'Inter', system-ui, -apple-system, sans-serif;
   letter-spacing: -0.011em;
   color: #080B12;
@@ -253,70 +253,40 @@ textarea:focus-visible {
 @keyframes heroWordBlurSlide {
   0% {
     opacity: 0;
-    filter: blur(14px);
-    transform: translateY(24px) scale(0.96);
-  }
-  85% {
-    filter: blur(0.5px);
-  }
-  99% {
-    opacity: 1;
-    filter: blur(0px);
-    transform: translateY(0) scale(1);
+    transform: translateY(16px);
   }
   100% {
     opacity: 1;
-    filter: none;
-    transform: none;
+    transform: translateY(0);
   }
 }
 
 @keyframes heroSubtitleBlurSlide {
   0% {
     opacity: 0;
-    filter: blur(10px);
-    transform: translateY(20px);
-  }
-  85% {
-    filter: blur(0.5px);
-  }
-  99% {
-    opacity: 1;
-    filter: blur(0px);
-    transform: translateY(0);
+    transform: translateY(14px);
   }
   100% {
     opacity: 1;
-    filter: none;
-    transform: none;
+    transform: translateY(0);
   }
 }
 
 @keyframes heroActionsBlurSlide {
   0% {
     opacity: 0;
-    filter: blur(8px);
-    transform: translateY(18px) scale(0.96);
-  }
-  85% {
-    filter: blur(0.5px);
-  }
-  99% {
-    opacity: 1;
-    filter: blur(0px);
-    transform: translateY(0) scale(1);
+    transform: translateY(14px);
   }
   100% {
     opacity: 1;
-    filter: none;
-    transform: none;
+    transform: translateY(0);
   }
 }
 
 .animate-hero-word {
   opacity: 0;
   display: inline-block;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   animation: heroWordBlurSlide 0.78s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -324,7 +294,7 @@ textarea:focus-visible {
 
 .animate-hero-subtitle {
   opacity: 0;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   animation: heroSubtitleBlurSlide 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
@@ -332,7 +302,7 @@ textarea:focus-visible {
 
 .animate-hero-actions {
   opacity: 0;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   animation: heroActionsBlurSlide 0.85s cubic-bezier(0.16, 1, 0.3, 1) 1.05s forwards;
@@ -385,44 +355,34 @@ textarea:focus-visible {
 @keyframes sectionRevealBlur {
   0% {
     opacity: 0;
-    filter: blur(10px);
-    transform: translateY(22px);
-  }
-  85% {
-    filter: blur(0.5px);
+    transform: translateY(16px);
   }
   100% {
     opacity: 1;
-    filter: blur(0px);
     transform: translateY(0);
   }
 }
 
 .animate-section-reveal {
   opacity: 0;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
   animation: sectionRevealBlur 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes cardRevealBlur {
   0% {
     opacity: 0;
-    filter: blur(8px);
-    transform: translateY(26px) scale(0.97);
-  }
-  85% {
-    filter: blur(0.5px);
+    transform: translateY(16px);
   }
   100% {
     opacity: 1;
-    filter: blur(0px);
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
 .animate-card-reveal {
   opacity: 0;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
   animation: cardRevealBlur 0.82s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -449,10 +409,10 @@ textarea:focus-visible {
 
 @keyframes subtleFloatSlow {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translateY(-6px);
+    transform: translate3d(0, -4px, 0);
   }
 }
 
@@ -463,11 +423,9 @@ textarea:focus-visible {
 @keyframes subtlePulseGlow {
   0%, 100% {
     opacity: 0.12;
-    transform: scale(1);
   }
   50% {
-    opacity: 0.28;
-    transform: scale(1.08);
+    opacity: 0.22;
   }
 }
 

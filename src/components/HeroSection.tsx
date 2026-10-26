@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useSPA } from "@/context/SPAContext";
@@ -36,16 +37,20 @@ export default function HeroSection({ onOpenConsultation }: HeroSectionProps = {
     <section
       id="hero"
       className="relative min-h-screen flex flex-col justify-center pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-white overflow-hidden scroll-mt-20 select-none"
-      style={{
-        backgroundImage: `
-          linear-gradient(180deg, rgba(8, 14, 28, 0.2) 0%, rgba(8, 14, 28, 0.0) 30%, rgba(8, 14, 28, 0.0) 70%, rgba(7, 14, 30, 0.35) 100%),
-          url('/images/hero-bg.png')
-        `,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundColor: "#1E2638",
-      }}
     >
+      {/* High-Performance Optimized Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+        <Image
+          src="/images/hero-bg.webp"
+          alt="FINCORE Financial & Business Advisory"
+          fill
+          priority
+          sizes="100vw"
+          quality={85}
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#080E1C]/40 via-[#080E1C]/15 to-[#080E1C]/60" />
+      </div>
       {/* Main Hero Editorial Content (Centered) */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 my-auto text-center space-y-6 sm:space-y-8">
         {/* Monumental Centered Headline with Crisp Shadows */}

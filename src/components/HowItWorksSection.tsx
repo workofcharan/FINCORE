@@ -61,8 +61,8 @@ export default function HowItWorksSection() {
       className="py-20 lg:py-28 bg-[#FAFBFD] relative scroll-mt-20 overflow-hidden"
     >
       {/* Decorative ambient gradient blooms */}
-      <div className="absolute top-1/3 -right-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none animate-subtle-pulse" />
-      <div className="absolute -bottom-10 -left-20 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none animate-subtle-float" />
+      <div className="absolute top-1/3 -right-20 w-80 h-80 bg-[radial-gradient(circle,rgba(59,130,246,0.05)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute -bottom-10 -left-20 w-80 h-80 bg-[radial-gradient(circle,rgba(99,102,241,0.05)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header with smooth entrance animation */}
