@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+import Link from "next/link";
 import {
   Search,
   Layers,
@@ -24,7 +25,6 @@ import {
 } from "lucide-react";
 import { allServices, ServiceItem } from "@/data/servicesData";
 import { ServiceCardModern } from "@/components/ServiceCardModern";
-import ServiceDetailModal from "@/components/ServiceDetailModal";
 import { useSPA } from "@/context/SPAContext";
 import { useInView } from "@/hooks/useInView";
 
@@ -306,8 +306,6 @@ export default function ServicesSection({
   const { ref, isInView } = useInView({ threshold: 0.05 });
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [activeModalService, setActiveModalService] =
-    useState<ServiceItem | null>(null);
 
   const categories = useMemo(
     () => [
@@ -472,8 +470,8 @@ export default function ServicesSection({
               return (
                 <div
                   key={service.id}
-                  style={{ animationDelay: `${(idx % 6) * 0.08}s` }}
-                  className={isInView ? "animate-card-reveal" : "opacity-0"}
+                  style={{ animationDelay: `${(idx % 6) * 0.05}s` }}
+                  className="animate-card-reveal"
                 >
                   <ServiceCardModern
                     service={service}
@@ -484,7 +482,7 @@ export default function ServicesSection({
                     glowColor={config.glowColor}
                     bullets={config.bullets}
                     stats={config.stats}
-                    onClick={() => setActiveModalService(service)}
+                    backgroundImage={`/images/cards/card-${service.id}.webp`}
                   />
                 </div>
               );
@@ -516,28 +514,14 @@ export default function ServicesSection({
               <strong>Indian Compliance Note:</strong> Service applicability, tax rates, and document prerequisites depend on entity structure, turnover, and current notifications from the Income Tax Department, GST Council, MCA, EPFO, ESIC, and municipal corporations.
             </p>
           </div>
-          <button
-            type="button"
-            onClick={() => handleConsult("General Advisory")}
+          <Link
+            href="/contact"
             className="text-xs font-semibold text-[#163E8C] hover:text-[#0B2458] shrink-0 hover:underline cursor-pointer"
           >
             Consult Compliance Advisor →
-          </button>
+          </Link>
         </div>
       </div>
-
-      {/* Interactive Service Detail Modal */}
-      {activeModalService && (
-        <ServiceDetailModal
-          isOpen={!!activeModalService}
-          onClose={() => setActiveModalService(null)}
-          service={activeModalService}
-          onRequestConsultation={(svc) => {
-            setActiveModalService(null);
-            handleConsult(svc.name);
-          }}
-        />
-      )}
     </section>
   );
 }
