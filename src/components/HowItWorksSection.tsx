@@ -2,75 +2,140 @@
 
 import React from "react";
 import {
-  FileText,
-  SearchCheck,
-  FileCode2,
-  Headphones,
+  Lightbulb,
+  Target,
+  Coins,
+  TrendingUp,
   ArrowRight,
   Workflow,
 } from "lucide-react";
 import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 
+interface ProcessStep {
+  step: number;
+  numberStr: string;
+  title: string;
+  shortDesc: string;
+  icon: React.ComponentType<{ className?: string }>;
+  accentColor: string;
+  bullets: {
+    title: string;
+    desc: string;
+  }[];
+  delay: string;
+}
+
+const PROCESS_STEPS: ProcessStep[] = [
+  {
+    step: 1,
+    numberStr: "01",
+    title: "REQUIREMENT INTAKE",
+    shortDesc: "Initial intake, applicability verification, and personalized scope definition.",
+    icon: Lightbulb,
+    accentColor: "#0284C7", // Cyan / Sky Blue
+    bullets: [
+      {
+        title: "ONLINE SUBMISSION",
+        desc: "Share your business activity, structure, and statutory goals.",
+      },
+      {
+        title: "CHECKLIST DISCOVERY",
+        desc: "Receive an instant statutory checklist of required PAN & financial records.",
+      },
+      {
+        title: "DEDICATED ADVISOR",
+        desc: "Get paired with a domain compliance lead for direct coordination.",
+      },
+    ],
+    delay: "0.05s",
+  },
+  {
+    step: 2,
+    numberStr: "02",
+    title: "ELIGIBILITY & SCOPE",
+    shortDesc: "Comprehensive portal assessment, data reconciliation, and advisory strategy.",
+    icon: Target,
+    accentColor: "#7C3AED", // Purple / Violet
+    bullets: [
+      {
+        title: "DATA RECONCILIATION",
+        desc: "Match Form 26AS, AIS/TIS, GSTR-2B, and MCA records for zero gaps.",
+      },
+      {
+        title: "TAX OPTIMIZATION",
+        desc: "Identify legitimate statutory deductions, exemptions, and state benefits.",
+      },
+      {
+        title: "TRANSPARENT SCOPE",
+        desc: "Lock clear timeline commitments with zero hidden government costs.",
+      },
+    ],
+    delay: "0.15s",
+  },
+  {
+    step: 3,
+    numberStr: "03",
+    title: "DRAFTING & FILING",
+    shortDesc: "Accurate documentation, statutory forms compilation, and government filing.",
+    icon: Coins,
+    accentColor: "#F59E0B", // Golden Amber / Warm Yellow
+    bullets: [
+      {
+        title: "LEGAL DRAFTING",
+        desc: "Draft resolutions, partnership deeds, MOA/AOA, and calculation sheets.",
+      },
+      {
+        title: "CLIENT APPROVAL",
+        desc: "Preview and approve computational sheets prior to portal transmission.",
+      },
+      {
+        title: "GOVERNMENT FILING",
+        desc: "Direct submission on MCA, Income Tax, GSTN, EPFO, or municipal portals.",
+      },
+    ],
+    delay: "0.25s",
+  },
+  {
+    step: 4,
+    numberStr: "04",
+    title: "APPROVAL & SUPPORT",
+    shortDesc: "Official certificates delivery, cloud document vault, and calendar tracking.",
+    icon: TrendingUp,
+    accentColor: "#EF4444", // Coral / Red-Orange
+    bullets: [
+      {
+        title: "OFFICIAL APPROVAL",
+        desc: "Receive verified acknowledgements, ITR-V, and statutory certificates.",
+      },
+      {
+        title: "SECURE DOCUMENT VAULT",
+        desc: "Lifetime cloud archive of all filings, challans, and statutory records.",
+      },
+      {
+        title: "COMPLIANCE MONITORING",
+        desc: "Periodic calendar alerts for advance tax, quarterly TDS, and ROC due dates.",
+      },
+    ],
+    delay: "0.35s",
+  },
+];
+
 export default function HowItWorksSection() {
   const { ref, isInView } = useInView({ threshold: 0.1 });
-
-  const steps = [
-    {
-      step: 1,
-      title: "Tell Us Your Requirement",
-      tagline: "Inquiry & Intake",
-      description:
-        "Submit an online enquiry or contact our team specifying your required service, entity type, and current status.",
-      icon: FileText,
-      delay: "0.10s",
-    },
-    {
-      step: 2,
-      title: "Understand Your Needs",
-      tagline: "Scope & Eligibility Check",
-      description:
-        "We evaluate statutory applicability, identify necessary documentation, and provide transparent scope parameters.",
-      icon: SearchCheck,
-      delay: "0.22s",
-    },
-    {
-      step: 3,
-      title: "Documentation & Processing",
-      tagline: "Drafting & Portal Submissions",
-      description:
-        "Our team assists in assembling compliant files, preparing statutory forms, and coordinating official filings.",
-      icon: FileCode2,
-      delay: "0.34s",
-    },
-    {
-      step: 4,
-      title: "Follow-Up & Ongoing Support",
-      tagline: "Acknowledgements & Calendar",
-      description:
-        "Receive official submission receipts, portal acknowledgements, and periodic support for upcoming compliance cycles.",
-      icon: Headphones,
-      delay: "0.46s",
-    },
-  ];
 
   return (
     <section
       ref={ref}
       id="process"
-      className="py-20 lg:py-28 bg-[#FAFBFD] relative scroll-mt-20 overflow-hidden"
+      className="py-20 lg:py-28 bg-[#F4F6F9] relative scroll-mt-20 overflow-hidden"
     >
-      {/* Decorative ambient gradient blooms */}
-      <div className="absolute top-1/3 -right-20 w-80 h-80 bg-[radial-gradient(circle,rgba(59,130,246,0.05)_0%,transparent_70%)] pointer-events-none" />
-      <div className="absolute -bottom-10 -left-20 w-80 h-80 bg-[radial-gradient(circle,rgba(99,102,241,0.05)_0%,transparent_70%)] pointer-events-none" />
+      {/* Decorative ambient gradient backdrop */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-[radial-gradient(ellipse,rgba(255,255,255,0.8)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header with smooth entrance animation */}
-        <div
-          className={`text-center max-w-3xl mx-auto space-y-4 mb-16 transition-all duration-700 ${
-            isInView ? "animate-section-reveal" : "opacity-0 translate-y-6"
-          }`}
-        >
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-20 transition-all duration-700 animate-section-reveal">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EAF1FF] text-[#163E8C] text-xs font-semibold uppercase tracking-wider border border-blue-200/60 shadow-xs">
             <Workflow className="w-3.5 h-3.5 text-[#163E8C] animate-spin" style={{ animationDuration: "12s" }} />
             <span>Structured Engagement Process</span>
@@ -86,71 +151,107 @@ export default function HowItWorksSection() {
           </p>
         </div>
 
-        {/* Process Timeline: Horizontal with Animated Traveling Beam on Desktop */}
-        <div className="relative">
-          {/* Desktop Connecting Line with Traveling Energy Beam */}
-          <div className="hidden lg:block absolute top-[68px] left-[10%] right-[10%] h-1 bg-slate-200/80 rounded-full overflow-hidden z-0">
-            <div className="h-full w-48 bg-gradient-to-r from-transparent via-[#163E8C] to-transparent rounded-full animate-beam-flow shadow-sm shadow-[#163E8C]" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 relative z-10">
-            {steps.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.step}
-                  style={{ animationDelay: item.delay }}
-                  className={`bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-2xs hover:border-[#163E8C] hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ${
-                    isInView ? "animate-card-reveal" : "opacity-0 translate-y-8"
-                  }`}
-                >
-                  {/* Subtle top indicator bar on hover */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#163E8C]/0 to-transparent group-hover:via-[#163E8C] transition-all duration-500" />
-
-                  <div className="space-y-4">
-                    {/* Step Number & Icon */}
-                    <div className="flex items-center justify-between">
-                      <div className="w-13 h-13 rounded-2xl bg-[#EAF1FF] text-[#163E8C] flex items-center justify-center font-bold text-sm group-hover:bg-[#163E8C] group-hover:text-white group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-lg group-hover:shadow-[#163E8C]/25 transition-all duration-300 shadow-xs border border-blue-100">
-                        <Icon className="w-6 h-6 transition-transform" />
-                      </div>
-                      <span className="text-xs font-bold text-[#163E8C] bg-blue-50 px-2.5 py-1 rounded-full font-mono border border-blue-200 group-hover:bg-[#163E8C] group-hover:text-white group-hover:border-[#163E8C] transition-all duration-300 shadow-2xs">
-                        STEP 0{item.step}
-                      </span>
-                    </div>
-
-                    <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-[#163E8C] transition-colors">
-                        {item.tagline}
-                      </span>
-                      <h3 className="text-base font-bold text-[#080B12] mt-0.5 group-hover:text-[#163E8C] transition-colors">
-                        {item.title}
-                      </h3>
-                    </div>
-
-                    <p className="text-xs text-[#687386] leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-[#163E8C]">
-                    <span>Stage {item.step} of 4</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#163E8C] opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all" />
-                  </div>
+        {/* 4 Connected Infographic Cards Matching Reference Design */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-9 lg:gap-6 relative z-10 pt-4">
+          {PROCESS_STEPS.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={item.step}
+                style={{ animationDelay: item.delay }}
+                className="relative group flex flex-col transition-all duration-300 hover:-translate-y-2"
+              >
+                {/* Right-pointing chevron connector matching reference image */}
+                <div className="hidden lg:flex absolute -right-5.5 top-1/2 -translate-y-1/2 z-20 pointer-events-none">
+                  <svg
+                    className="w-6 h-12 drop-shadow-xs transition-transform duration-300 group-hover:translate-x-1"
+                    viewBox="0 0 24 40"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    style={{ color: item.accentColor }}
+                  >
+                    <path d="M4 4L20 20L4 36" />
+                  </svg>
                 </div>
-              );
-            })}
-          </div>
+
+                {/* Outer Colored Base Card with rounded-3xl and bottom speech bubble tail */}
+                <div
+                  className="relative rounded-[26px] p-4.5 sm:p-5 pb-5 text-white flex flex-col justify-between shadow-xl shadow-slate-300/50 transition-all duration-300 group-hover:shadow-2xl"
+                  style={{ backgroundColor: item.accentColor }}
+                >
+                  {/* Inner White Speech Bubble Card */}
+                  <div className="relative rounded-2xl bg-white p-5 pt-9 pb-6 shadow-md shadow-black/10 flex flex-col min-h-[290px] justify-between">
+                    {/* Top Floating Circular Icon Badge */}
+                    <div
+                      className="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg border-4 border-white transition-transform duration-300 group-hover:scale-110"
+                      style={{ backgroundColor: item.accentColor }}
+                    >
+                      <Icon className="w-6 h-6 stroke-[2.2]" />
+                    </div>
+
+                    {/* 3 Checklist Bullet Points */}
+                    <div className="space-y-4 my-auto">
+                      {item.bullets.map((bullet, bIdx) => (
+                        <div key={bIdx} className="flex items-start gap-2.5">
+                          <span
+                            className="w-2 h-2 rounded-full mt-1 shrink-0"
+                            style={{ backgroundColor: item.accentColor }}
+                          />
+                          <div className="space-y-0.5 min-w-0">
+                            <h5
+                              className="text-[11px] sm:text-xs font-black uppercase tracking-wider leading-tight"
+                              style={{ color: item.accentColor }}
+                            >
+                              {bullet.title}
+                            </h5>
+                            <p className="text-[11px] text-slate-500 leading-snug">
+                              {bullet.desc}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Inner White Downward Speech Bubble Tail */}
+                    <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-white" />
+                  </div>
+
+                  {/* Bottom Number & Title Section */}
+                  <div className="pt-5 px-1 flex items-center gap-3 relative z-10">
+                    {/* Giant Number */}
+                    <span className="text-4xl sm:text-5xl font-black text-white font-mono tracking-tighter leading-none select-none shrink-0">
+                      {item.numberStr}
+                    </span>
+                    {/* Title & Description */}
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-xs sm:text-sm font-black uppercase tracking-tight text-white font-heading leading-tight truncate">
+                        {item.title}
+                      </h4>
+                      <p className="text-[10px] sm:text-[11px] text-white/90 leading-tight mt-0.5 line-clamp-2 font-medium">
+                        {item.shortDesc}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Outer Colored Card Downward Speech Bubble Tail */}
+                  <div
+                    className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[12px]"
+                    style={{ borderTopColor: item.accentColor }}
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* Action Prompt */}
-        <div
-          className={`mt-14 text-center transition-all duration-700 delay-300 ${
-            isInView ? "animate-section-reveal" : "opacity-0 translate-y-4"
-          }`}
-        >
+        <div className="mt-18 text-center transition-all duration-700 delay-300 animate-section-reveal">
           <Link
             href="/contact"
-            className="btn-pill-warm group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-semibold text-white cursor-pointer shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+            className="btn-pill-warm group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-semibold text-white cursor-pointer shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
           >
             <span>Begin Step 1: Submit Your Requirement</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
