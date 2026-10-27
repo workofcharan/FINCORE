@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Compass,
   FileCheck2,
@@ -24,6 +25,7 @@ export default function AboutSection() {
       icon: Compass,
       metric: "Clarity First",
       delay: "0.12s",
+      backgroundImage: "/images/clear-guidance.png",
     },
     {
       id: "compliance-support",
@@ -96,9 +98,23 @@ export default function AboutSection() {
                 }`}
               >
                 {/* Subtle top shimmer accent on hover */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#163E8C]/0 to-transparent group-hover:via-[#163E8C] transition-all duration-500" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#163E8C]/0 to-transparent group-hover:via-[#163E8C] transition-all duration-500 z-10" />
 
-                <div className="space-y-4">
+                {/* Custom Card Background Image */}
+                {item.backgroundImage && (
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl z-0">
+                    <Image
+                      src={item.backgroundImage}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover object-center opacity-45 group-hover:opacity-65 group-hover:scale-105 transition-all duration-500 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/80 to-white/95 transition-colors duration-300" />
+                  </div>
+                )}
+
+                <div className="space-y-4 relative z-10">
                   <div className="flex items-center justify-between">
                     <div className="w-12 h-12 rounded-xl bg-white text-[#163E8C] border border-blue-100 flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#163E8C] group-hover:text-white group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-lg group-hover:shadow-[#163E8C]/25 transition-all duration-300">
                       <Icon className="w-6 h-6 transition-transform" />
@@ -119,7 +135,7 @@ export default function AboutSection() {
                   </div>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-[#163E8C] font-semibold">
+                <div className="pt-4 mt-4 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-[#163E8C] font-semibold relative z-10">
                   <div className="flex items-center gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#163E8C] group-hover:scale-110 transition-transform" />
                     <span className="truncate max-w-[150px]">{item.tagline}</span>
