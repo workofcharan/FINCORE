@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   Search,
   Layers,
-  ShieldAlert,
   Sparkles,
   ReceiptText,
   Percent,
@@ -505,22 +504,6 @@ export default function ServicesSection({
             </button>
           </div>
         )}
-
-        {/* Regulatory Scope Notice Box */}
-        <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 text-xs text-slate-600 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
-          <div className="flex items-start gap-2.5">
-            <ShieldAlert className="size-4 text-[#163E8C] shrink-0 mt-0.5" />
-            <p className="leading-relaxed">
-              <strong>Indian Compliance Note:</strong> Service applicability, tax rates, and document prerequisites depend on entity structure, turnover, and current notifications from the Income Tax Department, GST Council, MCA, EPFO, ESIC, and municipal corporations.
-            </p>
-          </div>
-          <Link
-            href="/contact"
-            className="text-xs font-semibold text-[#163E8C] hover:text-[#0B2458] shrink-0 hover:underline cursor-pointer"
-          >
-            Consult Compliance Advisor →
-          </Link>
-        </div>
       </div>
     </section>
   );
