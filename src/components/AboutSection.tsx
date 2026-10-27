@@ -36,6 +36,7 @@ export default function AboutSection() {
       icon: FileCheck2,
       metric: "Verified Scope",
       delay: "0.26s",
+      backgroundImage: "/images/compliance-support.png",
     },
     {
       id: "business-solutions",
@@ -108,9 +109,12 @@ export default function AboutSection() {
                       alt={item.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover object-center opacity-45 group-hover:opacity-65 group-hover:scale-105 transition-all duration-500 ease-out"
+                      className="object-cover object-center opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/80 to-white/95 transition-colors duration-300" />
+                    {/* Directional wash: ultra-crisp text on the left, clear vibrant consultant on the right */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/92 via-white/70 to-white/35 group-hover:from-white/88 group-hover:via-white/60 group-hover:to-white/25 transition-colors duration-300" />
+                    {/* Subtle bottom gradient to keep footer action crisp */}
+                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white/90 to-transparent" />
                   </div>
                 )}
 
@@ -129,7 +133,7 @@ export default function AboutSection() {
                       <span>{item.title}</span>
                       <ArrowRight className="w-4 h-4 text-[#163E8C] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0" />
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                    <p className="text-xs text-slate-700 font-medium leading-relaxed">
                       {item.description}
                     </p>
                   </div>
