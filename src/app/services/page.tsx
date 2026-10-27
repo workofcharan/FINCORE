@@ -21,6 +21,53 @@ export const metadata: Metadata = {
     "Comprehensive directory of consultancy services offered by FINCORE in India: Taxation & GST, Company Incorporation, Bookkeeping, Trade & FSSAI Licensing, and Payroll compliance.",
 };
 
+function getSubServiceMeta(name: string) {
+  const n = name.toLowerCase();
+  if (n.includes("tax filing") || n.includes("income tax")) {
+    return { slug: "tax-filing", image: "/images/tax-filing.png" };
+  }
+  if (n.includes("gst")) {
+    return { slug: "gst-registration-filing", image: "/images/gst.png" };
+  }
+  if (n.includes("provident fund") || n.includes("(pf)") || n.includes("epfo")) {
+    return { slug: "provident-fund", image: "/images/provident-fund.png" };
+  }
+  if (n.includes("esi") || n.includes("employee state insurance")) {
+    return { slug: "esi", image: "/images/esi.png" };
+  }
+  if (n.includes("tds")) {
+    return { slug: "tds", image: "/images/tds.png" };
+  }
+  if (n.includes("tcs") || n.includes("tax collected")) {
+    return { slug: "tcs", image: "/images/tcs.png" };
+  }
+  if (n.includes("professional tax") || n.includes("(pt)")) {
+    return { slug: "professional-tax", image: "/images/professional-tax.png" };
+  }
+  if (n.includes("accounting") || n.includes("bookkeeping")) {
+    return { slug: "accounting-bookkeeping", image: "/images/accounting-bookkeeping.png" };
+  }
+  if (n.includes("company incorporation") || n.includes("incorporation") || n.includes("private limited")) {
+    return { slug: "company-incorporation", image: "/images/company-incorporation.png" };
+  }
+  if (n.includes("partnership") || n.includes("llp")) {
+    return { slug: "partnership-registration", image: "/images/partnership.png" };
+  }
+  if (n.includes("business registration") || n.includes("sole proprietorship") || n.includes("udyam")) {
+    return { slug: "business-registration", image: "/images/business-registration.png" };
+  }
+  if (n.includes("trade license")) {
+    return { slug: "trade-license", image: "/images/trade-license.png" };
+  }
+  if (n.includes("labour")) {
+    return { slug: "labour-license", image: "/images/labour-license.png" };
+  }
+  if (n.includes("food license") || n.includes("fssai")) {
+    return { slug: "food-license", image: "/images/food-license.png" };
+  }
+  return { slug: null, image: null };
+}
+
 export default function ServicesPage() {
   const iconMap: Record<string, typeof ReceiptText> = {
     ReceiptText,
@@ -238,136 +285,57 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Subservices Grid */}
-                    <div className="lg:col-span-5 bg-[#F5F7FA] rounded-xl p-5 border border-slate-200/80 space-y-3">
-                      <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Practices Covered:
-                      </span>
+                    <div className="lg:col-span-5 bg-[#F5F7FA] rounded-2xl p-4 sm:p-5 border border-slate-200/80 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                          Practices Covered
+                        </span>
+                        <span className="text-[11px] font-semibold text-[#163E8C] bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100">
+                          {category.subServices.length} Practices
+                        </span>
+                      </div>
+
                       <div className="space-y-2.5">
                         {category.subServices.map((sub, i) => {
-                          const isSubTds = sub.name.toLowerCase().includes("tds");
-                          const isSubGst = sub.name.toLowerCase().includes("gst");
-                          const isSubEsi =
-                            sub.name.toLowerCase().includes("esi") ||
-                            sub.name.toLowerCase().includes("employee state insurance");
-                          const isSubTcs =
-                            sub.name.toLowerCase().includes("tcs") ||
-                            sub.name.toLowerCase().includes("tax collected at source");
-                          const isSubPartnership =
-                            sub.name.toLowerCase().includes("partnership");
-                          const isSubTradeLicense =
-                            sub.name.toLowerCase().includes("trade license");
-                          const isSubLabourLicense =
-                            sub.name.toLowerCase().includes("labour");
-                          const isSubProfessionalTax =
-                            sub.name.toLowerCase().includes("professional tax") ||
-                            sub.name.toLowerCase().includes("(pt)");
-                          const isSubProvidentFund =
-                            sub.name.toLowerCase().includes("provident fund") ||
-                            sub.name.toLowerCase().includes("(pf)") ||
-                            sub.name.toLowerCase().includes("epfo");
-                          const isSubAccounting =
-                            sub.name.toLowerCase().includes("accounting") ||
-                            sub.name.toLowerCase().includes("bookkeeping");
-                          const isSubCompanyIncorporation =
-                            sub.name.toLowerCase().includes("company incorporation") ||
-                            sub.name.toLowerCase().includes("incorporation");
-                          const isSubFoodLicense =
-                            sub.name.toLowerCase().includes("food license") ||
-                            sub.name.toLowerCase().includes("fssai");
-                          const isSubBusinessRegistration =
-                            sub.name.toLowerCase().includes("business registration") ||
-                            sub.name.toLowerCase().includes("sole proprietorship") ||
-                            sub.name.toLowerCase().includes("udyam");
-                          return (
+                          const { slug: subSlug, image: subImage } = getSubServiceMeta(sub.name);
+                          const CardInner = (
+                            <>
+                              <div className="flex-1 min-w-0 space-y-1">
+                                <div className="text-xs font-bold text-[#080B12] group-hover:text-[#163E8C] transition-colors flex items-center gap-1.5">
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-[#163E8C] shrink-0" />
+                                  <span className="font-semibold leading-tight">{sub.name}</span>
+                                </div>
+                                <p className="text-[11px] text-slate-500 leading-relaxed pl-5 line-clamp-2">
+                                  {sub.description}
+                                </p>
+                              </div>
+
+                              {subImage && (
+                                <div className="shrink-0 w-20 h-16 sm:w-24 sm:h-16 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center p-1.5 overflow-hidden group-hover:bg-blue-50/60 group-hover:border-blue-200 transition-colors shadow-2xs">
+                                  <img
+                                    src={subImage}
+                                    alt={sub.name}
+                                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                                  />
+                                </div>
+                              )}
+                            </>
+                          );
+
+                          return subSlug ? (
+                            <Link
+                              key={i}
+                              href={`/services/${subSlug}`}
+                              className="flex items-center justify-between gap-3 sm:gap-4 p-3 sm:p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-2xs hover:shadow-md hover:border-[#163E8C]/40 transition-all duration-200 group cursor-pointer"
+                            >
+                              {CardInner}
+                            </Link>
+                          ) : (
                             <div
                               key={i}
-                              className="bg-white p-3 rounded-lg border border-slate-200/60 shadow-2xs space-y-1 relative overflow-hidden group"
+                              className="flex items-center justify-between gap-3 sm:gap-4 p-3 sm:p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-2xs group"
                             >
-                              {isSubBusinessRegistration && (
-                                <div
-                                  className="absolute right-0 top-0 bottom-0 w-28 bg-contain bg-no-repeat bg-right opacity-30 group-hover:opacity-55 transition-all duration-300 pointer-events-none rounded"
-                                  style={{ backgroundImage: `url('/images/business-registration.png')` }}
-                                />
-                              )}
-                              {isSubFoodLicense && (
-                                <div
-                                  className="absolute right-0 top-0 bottom-0 w-28 bg-contain bg-no-repeat bg-right opacity-30 group-hover:opacity-55 transition-all duration-300 pointer-events-none rounded"
-                                  style={{ backgroundImage: `url('/images/food-license.png')` }}
-                                />
-                              )}
-                              {isSubCompanyIncorporation && (
-                                <div
-                                  className="absolute right-0 top-0 bottom-0 w-28 bg-contain bg-no-repeat bg-right opacity-30 group-hover:opacity-55 transition-all duration-300 pointer-events-none rounded"
-                                  style={{ backgroundImage: `url('/images/company-incorporation.png')` }}
-                                />
-                              )}
-                              {isSubAccounting && (
-                                <div
-                                  className="absolute right-0 top-0 bottom-0 w-28 bg-cover bg-no-repeat bg-center opacity-30 group-hover:opacity-55 transition-all duration-300 pointer-events-none rounded"
-                                  style={{ backgroundImage: `url('/images/accounting-bookkeeping.png')` }}
-                                />
-                              )}
-                              {isSubProvidentFund && (
-                                <div
-                                  className="absolute right-0 top-0 bottom-0 w-28 bg-contain bg-no-repeat bg-right opacity-30 group-hover:opacity-55 transition-all duration-300 pointer-events-none rounded"
-                                  style={{ backgroundImage: `url('/images/provident-fund.png')` }}
-                                />
-                              )}
-                              {isSubProfessionalTax && (
-                                <div
-                                  className="absolute right-0 top-0 bottom-0 w-28 bg-contain bg-no-repeat bg-right opacity-30 group-hover:opacity-55 transition-all duration-300 pointer-events-none rounded"
-                                  style={{ backgroundImage: `url('/images/professional-tax.png')` }}
-                                />
-                              )}
-                              {isSubLabourLicense && (
-                                <div
-                                  className="absolute right-0 top-0 bottom-0 w-28 bg-contain bg-no-repeat bg-right opacity-30 group-hover:opacity-55 transition-all duration-300 pointer-events-none rounded"
-                                  style={{ backgroundImage: `url('/images/labour-license.png')` }}
-                                />
-                              )}
-                              {isSubTradeLicense && (
-                                <div
-                                  className="absolute right-0 top-0 bottom-0 w-28 bg-cover bg-no-repeat bg-center opacity-30 group-hover:opacity-55 transition-all duration-300 pointer-events-none rounded"
-                                  style={{ backgroundImage: `url('/images/trade-license.png')` }}
-                                />
-                              )}
-                              {isSubPartnership && (
-                                <div
-                                  className="absolute right-0 top-0 bottom-0 w-28 bg-contain bg-no-repeat bg-right opacity-30 group-hover:opacity-55 transition-all duration-300 pointer-events-none rounded"
-                                  style={{ backgroundImage: `url('/images/partnership.png')` }}
-                                />
-                              )}
-                              {isSubTds && (
-                                <div
-                                  className="absolute right-0 top-0 bottom-0 w-28 bg-contain bg-no-repeat bg-right opacity-25 group-hover:opacity-45 transition-all duration-300 pointer-events-none"
-                                  style={{ backgroundImage: `url('/images/tds.png')` }}
-                                />
-                              )}
-                              {isSubGst && (
-                                <div
-                                  className="absolute right-0 top-0 bottom-0 w-28 bg-contain bg-no-repeat bg-right opacity-25 group-hover:opacity-45 transition-all duration-300 pointer-events-none"
-                                  style={{ backgroundImage: `url('/images/gst.png')` }}
-                                />
-                              )}
-                              {isSubEsi && (
-                                <div
-                                  className="absolute right-0 top-0 bottom-0 w-28 bg-contain bg-no-repeat bg-right opacity-30 group-hover:opacity-55 transition-all duration-300 pointer-events-none rounded"
-                                  style={{ backgroundImage: `url('/images/esi.png')` }}
-                                />
-                              )}
-                              {isSubTcs && (
-                                <div
-                                  className="absolute right-0 top-0 bottom-0 w-28 bg-contain bg-no-repeat bg-right opacity-30 group-hover:opacity-55 transition-all duration-300 pointer-events-none rounded"
-                                  style={{ backgroundImage: `url('/images/tcs.png')` }}
-                                />
-                              )}
-                              <div className="text-xs font-bold text-[#080B12] flex items-center gap-1.5 relative z-10">
-                                <CheckCircle2 className="w-3.5 h-3.5 text-[#163E8C] shrink-0" />
-                                <span>{sub.name}</span>
-                              </div>
-                              <p className="text-[11px] text-[#687386] leading-tight pl-5 relative z-10">
-                                {sub.description}
-                              </p>
+                              {CardInner}
                             </div>
                           );
                         })}

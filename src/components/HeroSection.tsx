@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useSPA } from "@/context/SPAContext";
@@ -36,31 +35,17 @@ export default function HeroSection({ onOpenConsultation }: HeroSectionProps = {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-white overflow-hidden scroll-mt-20 select-none"
+      className="relative min-h-[90vh] sm:min-h-screen flex flex-col justify-center pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 bg-gradient-to-b from-[#F3F8FD] via-[#F8FAFC] to-white overflow-hidden scroll-mt-20 select-none"
     >
-      {/* High-Performance Optimized Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-        <Image
-          src="/images/hero-bg.webp"
-          alt="FINCORE Financial & Business Advisory"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#080E1C]/50 via-[#080E1C]/20 to-[#080E1C]/75" />
-      </div>
+      {/* Ambient background illumination */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[720px] h-[480px] bg-[radial-gradient(ellipse_at_center,rgba(14,107,221,0.08)_0%,transparent_70%)] pointer-events-none blur-3xl -z-10" />
+      <div className="absolute inset-0 bg-enterprise-grid opacity-30 pointer-events-none -z-10" />
+
       {/* Main Hero Editorial Content (Centered) */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 my-auto text-center space-y-6 sm:space-y-8">
-        {/* Monumental Centered Headline with Crisp Shadows */}
-        <h1
-          className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.12] font-heading drop-shadow-2xl"
-          style={{
-            textShadow:
-              "0 2px 10px rgba(0, 0, 0, 0.95), 0 4px 20px rgba(0, 0, 0, 0.85), 0 8px 36px rgba(0, 0, 0, 0.75)",
-          }}
-        >
-          <span className="inline-block">
+        {/* Monumental Centered Headline */}
+        <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.15] font-heading">
+          <span className="inline-block text-[#080B12]">
             {line1Words.map((item, index) => (
               <React.Fragment key={item.text}>
                 <span
@@ -73,7 +58,7 @@ export default function HeroSection({ onOpenConsultation }: HeroSectionProps = {
               </React.Fragment>
             ))}
           </span>
-          <span className="block mt-1 sm:mt-2 text-white">
+          <span className="block mt-1 sm:mt-2 text-[#0E6BDD]">
             {line2Words.map((item, index) => (
               <React.Fragment key={item.text}>
                 <span
@@ -88,31 +73,25 @@ export default function HeroSection({ onOpenConsultation }: HeroSectionProps = {
           </span>
         </h1>
 
-        {/* Subtitle with Crisp Shadow */}
-        <p
-          className="animate-hero-subtitle text-base sm:text-lg md:text-xl text-white leading-relaxed max-w-2xl mx-auto font-medium"
-          style={{
-            textShadow:
-              "0 2px 8px rgba(0, 0, 0, 0.95), 0 4px 18px rgba(0, 0, 0, 0.85)",
-          }}
-        >
+        {/* Subtitle */}
+        <p className="animate-hero-subtitle text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-xl mx-auto font-medium font-sans">
           From business registration to full-scale tax compliance, we deliver precision in every detail.
         </p>
 
-        {/* Action Buttons: Rich Pill Button */}
+        {/* Action Buttons: Clean Modern Pills */}
         <div className="animate-hero-actions pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <button
             type="button"
             onClick={handleConsultation}
-            className="btn-pill-warm inline-flex items-center justify-center gap-2.5 px-8 py-3.5 sm:px-9 sm:py-4 text-sm sm:text-base font-semibold rounded-full text-white cursor-pointer group shadow-2xl"
+            className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 sm:px-9 sm:py-4 text-sm sm:text-base font-semibold rounded-full text-white bg-[#0E6BDD] hover:bg-[#0b5cbe] shadow-lg shadow-[#0E6BDD]/25 hover:shadow-xl hover:shadow-[#0E6BDD]/35 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group"
           >
             <span>Get a Consultation</span>
-            <ArrowRight className="w-4 h-4 text-amber-200/90 group-hover:translate-x-1.5 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-white/90 group-hover:translate-x-1.5 transition-transform" />
           </button>
 
           <Link
             href="/services"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold rounded-full text-white hover:text-white bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/30 transition-all duration-300 shadow-xl"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold rounded-full text-slate-800 hover:text-[#0E6BDD] bg-white hover:bg-slate-50 border border-slate-300/80 hover:border-[#0E6BDD]/40 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
           >
             <span>Explore Services</span>
           </Link>

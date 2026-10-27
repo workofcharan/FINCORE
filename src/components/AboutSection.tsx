@@ -47,6 +47,7 @@ export default function AboutSection() {
       icon: Briefcase,
       metric: "Growth Aligned",
       delay: "0.40s",
+      backgroundImage: "/images/business-solutions.png",
     },
   ];
 
