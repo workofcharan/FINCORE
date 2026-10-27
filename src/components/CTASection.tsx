@@ -2,8 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, FileCheck, Building2, BookOpen, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  ReceiptText,
+  Building2,
+  Calculator,
+  ShieldCheck,
+} from "lucide-react";
 import { useSPA } from "@/context/SPAContext";
 import { useInView } from "@/hooks/useInView";
 
@@ -34,138 +39,162 @@ export default function CTASection({ onOpenConsultation }: CTASectionProps = {})
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`relative w-full aspect-[1553/542] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-slate-200/80 bg-white transition-all duration-700 ${
+          className={`relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-slate-200/90 bg-gradient-to-r from-white via-white to-blue-50/40 transition-all duration-700 ${
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          {/* Banner Graphic */}
-          <Image
-            src="/images/fincore-banner.png"
-            alt="FINCORE - Financial & Business Consultancy: Your Trusted Partner in Tax, Registration, Accounting & Licensing"
-            fill
-            priority
-            sizes="(max-width: 1280px) 100vw, 1280px"
-            className="object-cover w-full h-full"
-          />
+          {/* Main Grid: Responsive 2-column layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[460px]">
 
-          {/* Interactive Hotspot Overlay: 'Explore Our Services ->' button */}
-          <a
-            href="#services"
-            onClick={(e) => handleScrollTo(e, "#services")}
-            aria-label="Explore Our Services"
-            className="absolute left-[4.8%] top-[58.5%] w-[14.5%] h-[8.3%] rounded-full cursor-pointer transition-all duration-200 hover:ring-2 hover:ring-blue-400 hover:ring-offset-2 hover:bg-white/10 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            title="Explore Our Services"
-          >
-            <span className="sr-only">Explore Our Services</span>
-          </a>
+            {/* Visual Artwork for Mobile/Tablet (< lg) */}
+            <div className="lg:hidden relative w-full h-52 sm:h-64 overflow-hidden border-b border-slate-100 bg-slate-50">
+              <Image
+                src="/images/banner-artwork.png"
+                alt="FINCORE Financial and Business Consultancy"
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover object-center"
+              />
+            </div>
 
-          {/* Interactive Hotspot Overlay: 'Get Consultation ->' button */}
-          <button
-            type="button"
-            onClick={handleConsultation}
-            aria-label="Get Consultation"
-            className="absolute left-[20.8%] top-[58.5%] w-[12.6%] h-[8.3%] rounded-full cursor-pointer transition-all duration-200 hover:ring-2 hover:ring-blue-400 hover:ring-offset-2 hover:bg-blue-600/10 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            title="Get Consultation"
-          >
-            <span className="sr-only">Get Consultation</span>
-          </button>
+            {/* Left Content Column (Desktop: 7 cols) */}
+            <div className="lg:col-span-7 xl:col-span-7 p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 flex flex-col justify-between z-10">
+              <div>
+                {/* Eyebrow */}
+                <div className="inline-flex items-center gap-2 mb-3">
+                  <span className="text-xs sm:text-sm font-bold tracking-widest text-[#163E8C] uppercase font-mono">
+                    YOUR TRUSTED PARTNER IN
+                  </span>
+                </div>
 
-          {/* Interactive Hotspot Overlays for the 4 Feature Pills at bottom */}
-          {/* 1. Tax & GST Compliance */}
-          <a
-            href="#services"
-            onClick={(e) => handleScrollTo(e, "#services")}
-            className="absolute left-[4.8%] top-[76.5%] w-[10.8%] h-[10%] rounded-full cursor-pointer hover:bg-blue-500/10 transition-colors"
-            title="Tax & GST Compliance"
-          >
-            <span className="sr-only">Tax &amp; GST Compliance</span>
-          </a>
+                {/* Main Heading */}
+                <h2 className="text-2xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-extrabold tracking-tight text-[#080B12] font-heading leading-[1.14] mb-4">
+                  Financial &amp; Business{" "}
+                  <span className="text-[#163E8C]">Consultancy</span>
+                </h2>
 
-          {/* 2. Business Registration */}
-          <a
-            href="#services"
-            onClick={(e) => handleScrollTo(e, "#services")}
-            className="absolute left-[16.0%] top-[76.5%] w-[11.0%] h-[10%] rounded-full cursor-pointer hover:bg-blue-500/10 transition-colors"
-            title="Business Registration"
-          >
-            <span className="sr-only">Business Registration</span>
-          </a>
+                {/* Subtitle / Paragraph */}
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mb-7 font-sans">
+                  From tax compliance and business registration to accounting and licensing, FINCORE helps individuals and businesses navigate essential financial and regulatory processes with clarity.
+                </p>
 
-          {/* 3. Accounting & Bookkeeping */}
-          <a
-            href="#services"
-            onClick={(e) => handleScrollTo(e, "#services")}
-            className="absolute left-[27.4%] top-[76.5%] w-[12.0%] h-[10%] rounded-full cursor-pointer hover:bg-blue-500/10 transition-colors"
-            title="Accounting & Bookkeeping"
-          >
-            <span className="sr-only">Accounting &amp; Bookkeeping</span>
-          </a>
+                {/* Action Buttons */}
+                <div className="flex flex-wrap items-center gap-3.5 mb-8 sm:mb-10">
+                  <a
+                    href="#services"
+                    onClick={(e) => handleScrollTo(e, "#services")}
+                    className="bg-[#163E8C] hover:bg-[#0B2458] text-white px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-base font-semibold shadow-md shadow-blue-900/15 hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 inline-flex items-center gap-2 group cursor-pointer"
+                  >
+                    <span>Explore Our Services</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </a>
 
-          {/* 4. Licensing & Regulatory Support */}
-          <a
-            href="#services"
-            onClick={(e) => handleScrollTo(e, "#services")}
-            className="absolute left-[39.6%] top-[76.5%] w-[14.0%] h-[10%] rounded-full cursor-pointer hover:bg-blue-500/10 transition-colors"
-            title="Licensing & Regulatory Support"
-          >
-            <span className="sr-only">Licensing &amp; Regulatory Support</span>
-          </a>
-        </div>
+                  <button
+                    type="button"
+                    onClick={handleConsultation}
+                    className="bg-white hover:bg-blue-50/70 text-[#163E8C] border-2 border-[#163E8C] px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-base font-semibold shadow-xs hover:shadow-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 inline-flex items-center gap-2 group cursor-pointer"
+                  >
+                    <span>Get Consultation</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </button>
+                </div>
+              </div>
 
-        {/* Mobile-Optimized Action Bar (< sm screens) */}
-        <div className="mt-4 px-1 sm:hidden flex flex-col gap-2.5">
-          <div className="flex items-center gap-2.5">
-            <button
-              type="button"
-              onClick={handleConsultation}
-              className="flex-1 btn-pill-warm py-3 px-4 rounded-xl text-center text-sm font-semibold text-white shadow-md inline-flex items-center justify-center gap-2"
-            >
-              <span>Get Consultation</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <a
-              href="#services"
-              onClick={(e) => handleScrollTo(e, "#services")}
-              className="flex-1 py-3 px-4 rounded-xl text-center text-sm font-semibold text-slate-800 bg-white border border-slate-300 shadow-sm hover:bg-slate-50 transition-colors inline-flex items-center justify-center"
-            >
-              Explore Services
-            </a>
-          </div>
+              {/* 4 Feature Badges at Bottom */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-6 border-t border-slate-200/80">
+                {/* 1. Tax & GST Compliance */}
+                <a
+                  href="#services"
+                  onClick={(e) => handleScrollTo(e, "#services")}
+                  className="group flex flex-col sm:flex-row items-start sm:items-center gap-2.5 p-1.5 rounded-xl hover:bg-white/90 transition-colors cursor-pointer"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-blue-50/90 border border-blue-100 flex items-center justify-center text-[#163E8C] shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+                    <ReceiptText className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-[#163E8C] transition-colors leading-tight">
+                      Tax &amp; GST
+                    </div>
+                    <div className="text-[11px] sm:text-xs text-slate-500 leading-tight">
+                      Compliance
+                    </div>
+                  </div>
+                </a>
 
-          {/* Quick Pillar Tags on Mobile */}
-          <div className="grid grid-cols-2 gap-2 text-xs text-slate-700 pt-0.5">
-            <a
-              href="#services"
-              onClick={(e) => handleScrollTo(e, "#services")}
-              className="flex items-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200/80 shadow-xs hover:border-blue-400 transition-colors"
-            >
-              <FileCheck className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-              <span className="font-medium truncate">Tax &amp; GST</span>
-            </a>
-            <a
-              href="#services"
-              onClick={(e) => handleScrollTo(e, "#services")}
-              className="flex items-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200/80 shadow-xs hover:border-blue-400 transition-colors"
-            >
-              <Building2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-              <span className="font-medium truncate">Registrations</span>
-            </a>
-            <a
-              href="#services"
-              onClick={(e) => handleScrollTo(e, "#services")}
-              className="flex items-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200/80 shadow-xs hover:border-blue-400 transition-colors"
-            >
-              <BookOpen className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-              <span className="font-medium truncate">Accounting</span>
-            </a>
-            <a
-              href="#services"
-              onClick={(e) => handleScrollTo(e, "#services")}
-              className="flex items-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200/80 shadow-xs hover:border-blue-400 transition-colors"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-              <span className="font-medium truncate">Licensing</span>
-            </a>
+                {/* 2. Business Registration */}
+                <a
+                  href="#services"
+                  onClick={(e) => handleScrollTo(e, "#services")}
+                  className="group flex flex-col sm:flex-row items-start sm:items-center gap-2.5 p-1.5 rounded-xl hover:bg-white/90 transition-colors cursor-pointer"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-blue-50/90 border border-blue-100 flex items-center justify-center text-[#163E8C] shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+                    <Building2 className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-[#163E8C] transition-colors leading-tight">
+                      Business
+                    </div>
+                    <div className="text-[11px] sm:text-xs text-slate-500 leading-tight">
+                      Registration
+                    </div>
+                  </div>
+                </a>
+
+                {/* 3. Accounting & Bookkeeping */}
+                <a
+                  href="#services"
+                  onClick={(e) => handleScrollTo(e, "#services")}
+                  className="group flex flex-col sm:flex-row items-start sm:items-center gap-2.5 p-1.5 rounded-xl hover:bg-white/90 transition-colors cursor-pointer"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-blue-50/90 border border-blue-100 flex items-center justify-center text-[#163E8C] shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+                    <Calculator className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-[#163E8C] transition-colors leading-tight">
+                      Accounting &amp;
+                    </div>
+                    <div className="text-[11px] sm:text-xs text-slate-500 leading-tight">
+                      Bookkeeping
+                    </div>
+                  </div>
+                </a>
+
+                {/* 4. Licensing & Regulatory Support */}
+                <a
+                  href="#services"
+                  onClick={(e) => handleScrollTo(e, "#services")}
+                  className="group flex flex-col sm:flex-row items-start sm:items-center gap-2.5 p-1.5 rounded-xl hover:bg-white/90 transition-colors cursor-pointer"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-blue-50/90 border border-blue-100 flex items-center justify-center text-[#163E8C] shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-[#163E8C] transition-colors leading-tight">
+                      Licensing &amp;
+                    </div>
+                    <div className="text-[11px] sm:text-xs text-slate-500 leading-tight">
+                      Regulatory Support
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Visual Artwork for Desktop (lg:col-span-5) */}
+            <div className="hidden lg:block lg:col-span-5 xl:col-span-5 relative w-full h-full min-h-[460px] overflow-hidden">
+              <Image
+                src="/images/banner-artwork.png"
+                alt="FINCORE Financial and Business Consultancy"
+                fill
+                priority
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="object-cover object-center"
+              />
+              {/* Subtle left-side blend gradient to smoothly merge into white container */}
+              <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+            </div>
+
           </div>
         </div>
       </div>

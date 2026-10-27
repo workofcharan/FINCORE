@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ServicesSection from "@/components/ServicesSection";
-import ConsultationForm from "@/components/ConsultationForm";
 import {
   ReceiptText,
   Building2,
@@ -116,33 +115,6 @@ export default function ServicesPage() {
                   id={category.slug}
                   className="bg-white rounded-2xl p-8 sm:p-10 border border-slate-200/90 shadow-sm hover:border-blue-400/60 hover:shadow-xl card-interactive transition-all space-y-8 relative overflow-hidden group"
                 >
-                  {category.slug === "taxation-compliance" && (
-                    <>
-                      <div
-                        className="absolute right-4 -bottom-4 w-48 h-48 sm:w-64 sm:h-64 bg-contain bg-no-repeat bg-right-bottom opacity-15 group-hover:opacity-25 group-hover:scale-105 transition-all duration-500 pointer-events-none"
-                        style={{ backgroundImage: `url('/images/tax-filing.png')` }}
-                      />
-                      <div className="absolute right-0 bottom-0 w-48 h-48 bg-radial from-blue-400/10 to-transparent rounded-full blur-2xl pointer-events-none" />
-                    </>
-                  )}
-                  {category.slug === "business-registration" && (
-                    <>
-                      <div
-                        className="absolute right-4 -bottom-4 w-48 h-48 sm:w-64 sm:h-64 bg-contain bg-no-repeat bg-right-bottom opacity-15 group-hover:opacity-25 group-hover:scale-105 transition-all duration-500 pointer-events-none"
-                        style={{ backgroundImage: `url('/images/business-registration.png')` }}
-                      />
-                      <div className="absolute right-0 bottom-0 w-48 h-48 bg-radial from-blue-600/10 to-transparent rounded-full blur-2xl pointer-events-none" />
-                    </>
-                  )}
-                  {category.slug === "licenses-compliance" && (
-                    <>
-                      <div
-                        className="absolute right-4 -bottom-4 w-48 h-48 sm:w-64 sm:h-64 bg-cover bg-no-repeat bg-center opacity-15 group-hover:opacity-25 group-hover:scale-105 transition-all duration-500 pointer-events-none rounded-xl"
-                        style={{ backgroundImage: `url('/images/trade-license.png')` }}
-                      />
-                      <div className="absolute right-0 bottom-0 w-48 h-48 bg-radial from-amber-500/10 to-transparent rounded-full blur-2xl pointer-events-none" />
-                    </>
-                  )}
                   {/* Top Bar */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
                     <div className="flex items-center gap-4">
@@ -344,16 +316,16 @@ export default function ServicesPage() {
                   </div>
 
                   {/* Bottom Footer */}
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                  <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-500 relative z-10">
                     <span>
                       Tailored packages available based on operational volume and legal form.
                     </span>
                     <Link
                       href={`/services/${category.slug}`}
-                      className="text-[#163E8C] font-semibold flex items-center gap-1 hover:underline"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-50/80 hover:bg-[#163E8C] text-[#163E8C] hover:text-white font-semibold transition-all border border-blue-100/80 hover:border-[#163E8C] shrink-0 self-start sm:self-auto cursor-pointer group/link"
                     >
-                      <span>Explore Requirements & Workflow</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <span>Explore Requirements &amp; Workflow</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -363,7 +335,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <ConsultationForm />
     </>
   );
 }
