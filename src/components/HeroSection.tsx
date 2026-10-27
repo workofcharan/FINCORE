@@ -36,20 +36,32 @@ export default function HeroSection({ onOpenConsultation }: HeroSectionProps = {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-white overflow-hidden scroll-mt-20 select-none rounded-b-[36px] sm:rounded-b-[48px] lg:rounded-b-[64px] shadow-2xl"
+      className="relative min-h-screen flex flex-col justify-center pt-32 sm:pt-36 lg:pt-40 pb-28 sm:pb-36 text-white overflow-hidden scroll-mt-20 select-none"
     >
       {/* High-Performance Optimized Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none rounded-b-[36px] sm:rounded-b-[48px] lg:rounded-b-[64px]">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
         <Image
           src="/images/hero-bg.webp"
           alt="FINCORE Financial & Business Advisory"
           fill
           priority
           sizes="100vw"
-          
-          className="object-cover object-center"
+          className="object-cover object-[center_35%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#080E1C]/40 via-[#080E1C]/15 to-[#080E1C]/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#080E1C]/50 via-[#080E1C]/20 to-[#080E1C]/75" />
+      </div>
+
+      {/* Seamless Full-Width Organic Curved Transition into About Section */}
+      <div className="absolute -bottom-1 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
+        <svg
+          viewBox="0 0 1440 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          className="w-full h-10 sm:h-14 lg:h-18 text-white fill-current block"
+        >
+          <path d="M0,0 C480,50 960,50 1440,0 L1440,80 L0,80 Z" />
+        </svg>
       </div>
       {/* Main Hero Editorial Content (Centered) */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 my-auto text-center space-y-6 sm:space-y-8">

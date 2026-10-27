@@ -53,9 +53,9 @@ export default function AboutSection() {
     <section
       ref={ref}
       id="about"
-      className="py-20 lg:py-28 bg-white relative scroll-mt-20 overflow-hidden"
+      className="pt-16 sm:pt-20 lg:pt-24 pb-20 lg:pb-28 bg-white relative scroll-mt-0 overflow-hidden"
     >
-      <div id="pillars" className="absolute -top-20" />
+      <div id="pillars" className="absolute top-0" />
 
       {/* Decorative ambient background glows */}
       <div className="absolute top-1/4 -left-32 w-80 h-80 bg-[radial-gradient(circle,rgba(59,130,246,0.05)_0%,transparent_70%)] pointer-events-none" />
