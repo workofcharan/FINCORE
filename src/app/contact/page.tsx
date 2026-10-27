@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import PageHero from "@/components/PageHero";
-import ConsultationForm from "@/components/ConsultationForm";
+import ContactWithGlobe from "@/components/ui/contact-with-globe";
 import {
   Phone,
   Mail,
@@ -24,16 +24,6 @@ interface ContactPageProps {
   searchParams: Promise<{
     service?: string;
   }>;
-}
-
-async function ContactFormWrapper({
-  searchParams,
-}: {
-  searchParams: Promise<{ service?: string }>;
-}) {
-  const params = await searchParams;
-  const initialService = params?.service || "Tax Filing";
-  return <ConsultationForm initialService={initialService} />;
 }
 
 export default function ContactPage({ searchParams }: ContactPageProps) {
@@ -154,7 +144,7 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
           </div>
         }
       >
-        <ContactFormWrapper searchParams={searchParams} />
+        <ContactWithGlobe />
       </Suspense>
 
       {/* Direct WhatsApp Prompt Banner */}

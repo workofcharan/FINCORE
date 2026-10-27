@@ -4,7 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import CTASection from "@/components/CTASection";
-import ConsultationForm from "@/components/ConsultationForm";
+import ContactWithGlobe from "@/components/ui/contact-with-globe";
 
 export default function HomePage() {
   return (
@@ -24,8 +24,8 @@ export default function HomePage() {
       {/* 5. Promotional Action Banner */}
       <CTASection />
 
-      {/* 6. Dedicated Consultation & Contact Desk */}
-      <ConsultationForm />
+      {/* 6. Dedicated Interactive Globe & Advisory Desk */}
+      <ContactWithGlobe id="consultation" />
     </>
   );
 }
